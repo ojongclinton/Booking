@@ -1,14 +1,11 @@
 .header-box{
     height: 120px;
     color: white;
-
-    position: relative;
-    background: transparent;
+    position: absolute;
     width: 100%;
-    background-image: url('../../assets/pictures/header-background.jpg');
-    box-shadow: inset 0px 50px 100px 0px #000000;
     background-size: cover;
-
+    border-bottom: 1px solid #373939;
+    z-index: 20;
 }
 
 .sticky-box{
@@ -17,7 +14,8 @@
     width: 100%;
     color: white;
     border-bottom: 1px solid grey;
-    position: sticky;
+    position: fixed;
+    z-index: 20;
     top: 0px;
     animation-name: slideinHead;
     animation-duration: .5s;

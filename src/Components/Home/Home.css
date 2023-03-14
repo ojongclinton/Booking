@@ -1,9 +1,62 @@
 .image-section{
     background-image: url('../../assets/pictures/header-background.jpg');
     background-size: cover;
-    height: 600px;
+    height: 130vh;
     width: 100%;
     background-repeat: no-repeat;
-    /* box-shadow: inset 0px 100px 200px 0px #000000; */
+    box-shadow: inset 0px 200px 700px 0px #000000;
     background-position: 0px;
+    position: relative;
+}
+
+/* h3.image-text{
+    color: white;
+    font-size: 40px;
+    position: absolute;
+    top: 100px;
+} */
+div.image-text-container{
+    font-size: 50px;
+    color: white;
+    padding-top: 310px;
+    padding-left: 100px;
+    max-width: 800px;
+}
+span.image-text-line-2{
+    padding-left: 170px;
+}
+
+div.image-text-container svg{
+    position: absolute;
+    right: 250px;
+    color: #b89146;
+    cursor: pointer;
+}
+div.image-foot-container{
+    position: absolute;
+    background-color: #0e1317;
+    max-width: 1000px;
+    left: 15%;
+    bottom: 0px;
+    display: flex;
+    justify-content: space-around;
+}
+div.image-footer-single-grid{
+    padding: 20px;
+    border-left: 1px solid #373939;
+    font-size: 14px;
+}
+div.bottom-icon{
+    display: flex;
+    align-items: flex-end;
+    color: white;
+}
+p.white{
+    color: #999999;
+    margin: 5px 0px;
+    font-weight: 700;
+}
+p.gold{
+    color: #b89146;
+    font-weight: 700;
 }

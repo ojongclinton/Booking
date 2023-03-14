@@ -1,16 +1,66 @@
 import React from 'react'
 import './Home.css'
+import {BsPlayCircle,BsFillCalendarMinusFill} from 'react-icons/bs'
+import { Modal,Grid } from '@mui/material'
+
 
 function Home() {
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '40%',
+    transform: 'translate(-50%, -50%)',
+    width: 500,
+    border:'none',
+    boxSizing:'border-box',
+    outline:'none'
+  };
+  const [open,setOpen] = React.useState(false)
+  const handleClick = ()=>{
+    setOpen(val=>!val)
+  }
   return (
     <div>
       <div className='image-section'>
-
-      </div>
-      <div>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint corrupti fugit, harum error tempora sed sequi, voluptatum, odio vitae quas tempore laborum. Facilis dolores dicta voluptates consequuntur est vel aut modi quibusdam, natus maxime ut veniam tempore, perferendis nostrum minima quidem debitis dolor libero quis quo. Recusandae, reiciendis dolores qui modi aliquam voluptate minima sequi error, explicabo doloribus, aspernatur totam? Beatae maxime quos odio, numquam inventore qui voluptate officiis consequatur commodi asperiores itaque id excepturi labore tempore ratione neque molestiae et illum rem. Molestias consequuntur veritatis sed, velit officia minima quidem doloribus sit voluptatum voluptate ex! Officia, nobis, ad eaque minus tempore praesentium unde tenetur ratione, dolore at iusto atque minima! Dicta id, perspiciatis quo architecto animi aliquid praesentium cupiditate dolor aperiam, quod eligendi est unde culpa, deleniti quibusdam. Dignissimos nesciunt voluptate vero, adipisci excepturi sunt reprehenderit magnam iste? Ut voluptatem, voluptatum alias veniam corporis nobis error delectus, magni dicta soluta enim ratione numquam a. Exercitationem ullam aperiam recusandae voluptates quos repudiandae optio? Officia earum, inventore iste voluptate non aliquam sapiente voluptatum aspernatur harum hic veritatis suscipit ab illum perferendis iusto beatae? Tempora obcaecati aperiam amet at magnam et, aliquam ut doloremque, facilis quos quae est ratione! Necessitatibus repellat, nam accusamus est veritatis soluta eius suscipit dolorem illum qui quos vitae officiis a nisi rerum molestiae deleniti hic recusandae? Corporis obcaecati, commodi perspiciatis enim quidem quod vitae, ut culpa accusamus recusandae facere quaerat! Aspernatur ut atque, voluptates unde, consequatur ab hic reprehenderit ullam impedit accusamus quaerat dolorum? Consequatur ut rem aliquam nisi consequuntur quae odit ipsam eligendi repellendus. Incidunt sapiente fugit inventore tempora magni quod facilis ea animi culpa voluptatum architecto, doloremque eaque nobis ratione ipsum voluptatem dolorum illo maxime corporis. Quidem laudantium ut quia veniam pariatur maiores, dignissimos quisquam laboriosam facere quis? Id repudiandae ea sint corrupti corporis? Facere aspernatur repellat perferendis, est eos rerum neque quas aut fuga maiores voluptate unde ratione modi repudiandae molestiae, ad molestias similique ut id nisi amet quisquam deleniti saepe! Dolores repellat fugit a repudiandae iure exercitationem. Quo fuga quos perspiciatis laboriosam dolor! Esse iure obcaecati tempore quod consequatur corporis nam ducimus possimus impedit dolore aliquam aliquid consectetur rem totam sapiente asperiores quos fugit placeat, fugiat minus velit cum saepe. Sapiente corporis, exercitationem temporibus a aliquam beatae nihil incidunt quod quos blanditiis doloremque adipisci quaerat ducimus sed numquam neque odit iusto accusantium cumque? Ut ab et eaque amet? Id, laboriosam? Commodi consequuntur adipisci eaque consectetur repellendus debitis earum culpa similique, assumenda numquam? Beatae voluptate itaque unde quaerat sint debitis magnam tempora ea. Eaque, sint dignissimos voluptate, aut ut illum odio nemo quod explicabo, maxime laborum. Consequatur nam dolor dignissimos possimus ipsum est aliquid in quos unde rem neque odit magnam fuga iste illum, dolorem voluptates quod voluptatem corporis. Reiciendis qui rem accusantium tempore velit est dicta praesentium, voluptatibus necessitatibus omnis? Quam unde reprehenderit eius quae nam commodi nesciunt obcaecati qui voluptate. Tempora temporibus reiciendis natus blanditiis molestiae placeat deserunt doloremque facilis dolores vitae, consequatur ipsa quam ullam aperiam, tenetur nostrum, itaque quibusdam rerum?
-        </p>
+        <div className='image-text-container'>
+          <BsPlayCircle size={130} onClick={handleClick} />
+          <h3 className='image-text-line-1'>The Travelling Guidance <span className='image-text-line-2'>you always needed</span></h3>
+          <Modal open={open} onClose={handleClick}>
+            <div style={style}>
+              <iframe width="800" height="400" style={{border:'none'}}
+              src="https://www.youtube.com/embed/tgbNymZ7vqY">
+              </iframe>
+            </div>
+          </Modal>
+        </div>
+        <div className='image-foot-container'>
+          <Grid container spacing={0}>
+            <Grid xs={3}>
+              <div className='image-footer-single-grid flex-btw'>
+                <div>
+                  <p className='white'>Check in</p>
+                  <p className='gold'>mm/dd/yy</p>
+                </div>
+                <div className='bottom-icon'><BsFillCalendarMinusFill/></div>
+              </div>
+            </Grid>
+            <Grid xs={3}>
+              <div className='image-footer-single-grid'>
+Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum, perspiciatis?
+              </div>
+            </Grid>
+            <Grid xs={3}>
+              <div className='image-footer-single-grid'>
+Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum, perspiciatis?
+              </div>
+            </Grid>
+            <Grid xs={3}>
+              <div className='image-footer-single-grid'>
+Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum, perspiciatis?
+              </div>
+            </Grid>
+          </Grid>
+        </div>
       </div>
     </div>
   )
