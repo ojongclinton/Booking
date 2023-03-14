@@ -1,0 +1,14 @@
+.keyChange{
+    animation-name: slidein;
+    animation-duration: .8s;
+}
+
+@keyframes slidein {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }

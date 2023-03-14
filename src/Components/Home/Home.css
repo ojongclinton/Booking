@@ -1,0 +1,9 @@
+.image-section{
+    background-image: url('../../assets/pictures/header-background.jpg');
+    background-size: cover;
+    height: 600px;
+    width: 100%;
+    background-repeat: no-repeat;
+    /* box-shadow: inset 0px 100px 200px 0px #000000; */
+    background-position: 0px;
+}
