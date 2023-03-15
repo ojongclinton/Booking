@@ -5,7 +5,30 @@ import {RiArrowDropDownLine} from 'react-icons/ri'
 import { Modal,Grid } from '@mui/material'
 import Button from '../SingleItems/Button/Button'
 
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+
 function Home() {
+  const[checkin,setCheckIn] = React.useState("mm/dd/yy")
+  const[checkout,setCheckOut] = React.useState("mm/dd/yy")
+  const[rooms,setRoom] = React.useState(2)
+  const handleCheckin =(e)=>{
+    let value = e.target.value;
+    value = value.toString()
+
+    setCheckIn(value)
+  }
+  const handleCheckOut =(e)=>{
+    let value = e.target.value;
+    value = value.toString()
+
+    setCheckOut(value)
+  }
+  const handleRoom = (e)=>{
+    let value = e.target.value;
+    setRoom(value)
+  }
+
   const style = {
     position: 'absolute',
     top: '50%',
@@ -36,34 +59,42 @@ function Home() {
         </div>
         <div className='image-foot-container'>
           <Grid container spacing={0}>
-            <Grid xs={3}>
-              <div className='image-footer-single-grid flex-btw'>
+            <Grid item xs={3}>
+              <div className='image-footer-single-grid'>
                 <div>
                   <p className='white'>Check in</p>
-                  <p className='gold'>mm/dd/yy</p>
                 </div>
-                <div className='bottom-icon'><BsFillCalendarMinusFill/></div>
+                <div className='bottom-icon'>
+                    <input type="date" value={checkin} onChange={handleCheckin}/>
+                </div>
               </div>
             </Grid>
-            <Grid xs={3}>
-            <div className='image-footer-single-grid flex-btw'>
+            <Grid item xs={3}>
+            <div className='image-footer-single-grid'>
                 <div>
                   <p className='white'>Check out</p>
-                  <p className='gold'>mm/dd/yy</p>
                 </div>
-                <div className='bottom-icon'><BsFillCalendarMinusFill/></div>
+                <div className='bottom-icon'>
+                  <input type="date" value={checkout} onChange={handleCheckOut}/>
+                </div>
               </div>
             </Grid>
-            <Grid xs={3}>
-            <div className='image-footer-single-grid flex-btw'>
+            <Grid item xs={3}>
+            <div className='image-footer-single-grid'>
                 <div>
                   <p className='white'>Room</p>
-                  <p className='gold'>2 rooms</p>
                 </div>
-                <div className='bottom-icon'><RiArrowDropDownLine size={30}/></div>
+                <div className='bottom-icon'>
+                  <Select size='small' fullWidth value={rooms} onChange={handleRoom}  variant="standard" disableUnderline style={{color:'#b89146',fontWeight:700,fontSize:'14px'}}>
+                    <MenuItem value={1}>1 Room</MenuItem>
+                    <MenuItem value={2}>2 Rooms</MenuItem>
+                    <MenuItem value={3}>3 Rooms</MenuItem>
+                    <MenuItem value={4}>4 Rooms</MenuItem>
+                  </Select>
+                </div>
               </div>
             </Grid>
-            <Grid xs={3}>
+            <Grid item xs={3}>
             <div className='image-footer-single-grid-button'>
                   <Button text='CHECK NOW' big={true}/>
               </div>

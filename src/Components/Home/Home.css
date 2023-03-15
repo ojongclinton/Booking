@@ -54,11 +54,7 @@ div.image-footer-single-grid-button{
     min-width: 250px;
     height: 100%;
 }
-div.bottom-icon{
-    display: flex;
-    align-items: flex-end;
-    color: white;
-}
+
 p.white{
     color: #999999;
     margin: 5px 0px;
@@ -67,4 +63,27 @@ p.white{
 p.gold{
     color: #b89146;
     font-weight: 700;
+}
+
+
+
+input[type="date"],
+select{
+    background-color: transparent;
+    width: 100%;
+    border: none;
+    font-weight: 700;
+    color: #b89146;
+    cursor: pointer;
+}
+input[type="date"]:focus,
+select:focus{
+    outline: none;
+}
+select option{
+    margin: 10px;
+    color: black;
+}
+.image-footer-select{
+    color: blue;
 }

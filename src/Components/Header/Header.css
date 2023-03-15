@@ -11,7 +11,9 @@
 .sticky-box{
     background-color: #0e1317;
     height: 120px;
-    width: 100%;
+    /* width: 100%; */
+    width: 100vw;
+    max-width: 100vw;
     color: white;
     border-bottom: 1px solid grey;
     position: fixed;
