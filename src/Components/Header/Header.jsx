@@ -20,7 +20,7 @@ function Header() {
   }, []);
 
   return (
-    <div className={scroll>300?'sticky-box flex-arn flex-cnt':'header-box flex-arn flex-cnt'}>
+    <div className={scroll>200?'sticky-box flex-arn flex-cnt':'header-box flex-arn flex-cnt'}>
       <div className='flex-arn flex-cnt'>
         <GiMountaintop size={40} />
         <p className='logo'>WeMove</p>

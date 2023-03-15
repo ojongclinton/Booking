@@ -1,8 +1,9 @@
 import React from 'react'
 import './Home.css'
 import {BsPlayCircle,BsFillCalendarMinusFill} from 'react-icons/bs'
+import {RiArrowDropDownLine} from 'react-icons/ri'
 import { Modal,Grid } from '@mui/material'
-
+import Button from '../SingleItems/Button/Button'
 
 function Home() {
   const style = {
@@ -45,18 +46,26 @@ function Home() {
               </div>
             </Grid>
             <Grid xs={3}>
-              <div className='image-footer-single-grid'>
-Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum, perspiciatis?
+            <div className='image-footer-single-grid flex-btw'>
+                <div>
+                  <p className='white'>Check out</p>
+                  <p className='gold'>mm/dd/yy</p>
+                </div>
+                <div className='bottom-icon'><BsFillCalendarMinusFill/></div>
               </div>
             </Grid>
             <Grid xs={3}>
-              <div className='image-footer-single-grid'>
-Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum, perspiciatis?
+            <div className='image-footer-single-grid flex-btw'>
+                <div>
+                  <p className='white'>Room</p>
+                  <p className='gold'>2 rooms</p>
+                </div>
+                <div className='bottom-icon'><RiArrowDropDownLine size={30}/></div>
               </div>
             </Grid>
             <Grid xs={3}>
-              <div className='image-footer-single-grid'>
-Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum, perspiciatis?
+            <div className='image-footer-single-grid-button'>
+                  <Button text='CHECK NOW' big={true}/>
               </div>
             </Grid>
           </Grid>
