@@ -41,7 +41,7 @@ div.image-foot-container{
     justify-content: space-around;
 }
 div.image-footer-single-grid{
-    padding: 20px;
+    padding: 25px;
     border-left: 1px solid #373939;
     background-color: #0e1317;
     font-size: 14px;
@@ -86,4 +86,44 @@ select option{
 }
 .image-footer-select{
     color: blue;
+}
+div.section{
+    padding: 120px;
+    /* background-color: red; */
+}
+div.tex3t-div{
+    padding: 20px 0px;
+}
+div.tex3t-div>*{
+    margin-bottom: 40px;
+}
+div.tex3t-div h2{
+    font-size: 45px;
+    font-weight: 500;
+
+}
+div.image-div-under{
+    z-index: -1;
+    background-image: url('../../assets/pictures/welcome-section/room1.jpg');
+    height: 400px;
+    width: 500px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0px 7px 50px rgba(0, 0, 0, 0.07);
+    position: absolute;
+    top: 85px;
+}
+div.image-div-onTop{
+    z-index: 1;
+    background-image: url('../../assets/pictures/welcome-section/room2.jpg');
+    height: 300px;
+    width: 400px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
 }

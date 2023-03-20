@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Button.module.css'
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi';
 
-function Button({text='submit',from='#b89146',to='white', big=false}) {
+function Button({text='submit',from='#b89146',to='white', big=false ,width='auto'}) {
 const [hover,setHover] = React.useState(false);
 
 
@@ -15,7 +15,8 @@ const [hover,setHover] = React.useState(false);
         alignItems:'center',
         padding:'15px 40px',
         cursor:'pointer',
-        transition: 'all .5s ease-out'
+        transition: 'all .5s ease-out',
+        width:`${width}`
     }
 
     const inner = {

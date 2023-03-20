@@ -101,7 +101,28 @@ function Home() {
             </Grid>
           </Grid>
         </div>
+
       </div>
+      <div className='section'>
+        <div>
+          <Grid container spacing={2}>
+            <Grid item xs={5}>
+              <div className='tex3t-div'>
+                <p className='small gold'>Accomodations</p>
+                <h2>Welcome Our Hotels And Resorts</h2>
+                <p>Savvy travelers are looking for more than just the next destination on the map. They are looking for a memorable experience and to make new friends along the way.</p>
+                <Button text='CHECK NOW' width='fit-content'/>
+              </div>
+            </Grid>
+            <Grid item xs={7}>
+              <div className='images' style={{position:'relative'}}>
+                 <div className='image-div-under'></div>
+                <div className='image-div-onTop'></div>
+              </div>
+            </Grid>
+          </Grid>
+        </div>
+        </div>
     </div>
   )
 }
