@@ -7,6 +7,9 @@ import Button from '../SingleItems/Button/Button'
 
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import CustomImagePositioned from '../SingleItems/Other/CustomImagePositioned'
+import room1 from '../../assets/pictures/welcome-section/room1.jpg'
+import room2 from '../../assets/pictures/welcome-section/room2.jpg'
 
 function Home() {
   const[checkin,setCheckIn] = React.useState("mm/dd/yy")
@@ -111,17 +114,38 @@ function Home() {
                 <p className='small gold'>Accomodations</p>
                 <h2>Welcome Our Hotels And Resorts</h2>
                 <p>Savvy travelers are looking for more than just the next destination on the map. They are looking for a memorable experience and to make new friends along the way.</p>
-                <Button text='CHECK NOW' width='fit-content'/>
+                <Button text='CHECK NOW' width='fit-content' to='#0e1317' textFrom='white'/>
               </div>
             </Grid>
             <Grid item xs={7}>
               <div className='images' style={{position:'relative'}}>
-                 <div className='image-div-under'></div>
-                <div className='image-div-onTop'></div>
+                <CustomImagePositioned 
+                  image={room1}
+                  height='400px'
+                  width='500px'
+                  top="85px"
+                  left={0}
+                  right={0}
+                  bottom={0}
+                  text="yoooo"
+                />
+                <CustomImagePositioned 
+                  image={room2}
+                  height='300px'
+                  width='400px'
+                  top="0px"
+                  left="auto"
+                  right="0px"
+                  bottom="auto"
+                  text="yoooo"
+                />
               </div>
             </Grid>
           </Grid>
         </div>
+        </div>
+        <div className='section'>
+
         </div>
     </div>
   )
