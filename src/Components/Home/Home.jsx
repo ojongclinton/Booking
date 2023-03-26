@@ -10,6 +10,7 @@ import Select from '@mui/material/Select';
 import CustomImagePositioned from '../SingleItems/Other/CustomImagePositioned'
 import room1 from '../../assets/pictures/welcome-section/room1.jpg'
 import room2 from '../../assets/pictures/welcome-section/room2.jpg'
+import LuxuryRooms from './LuxuryRooms'
 
 function Home() {
   const[checkin,setCheckIn] = React.useState("mm/dd/yy")
@@ -144,8 +145,8 @@ function Home() {
           </Grid>
         </div>
         </div>
-        <div className='section'>
-
+        <div className='section greyBack'>
+            <LuxuryRooms />
         </div>
     </div>
   )
