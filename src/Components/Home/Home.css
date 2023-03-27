@@ -95,7 +95,7 @@ div.tex3t-div{
     padding: 20px 0px;
 }
 div.tex3t-div>*{
-    margin-bottom: 40px;
+    margin-bottom: 25px;
 }
 div.tex3t-div h2{
     font-size: 45px;
@@ -104,4 +104,25 @@ div.tex3t-div h2{
 }
 div.greyBack{
     background-color:#f7f7f7;
+}
+div.luxury-room-type{
+    background-color: white;
+    height: fit-content;
+    text-align: center;
+    padding: 10px 15px;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 26px;
+    color: #0e1317;
+    margin: 75px 10px;
+    width: fit-content;
+}
+
+.type-active{
+    background-color: #b89146 !important;
+    color: white !important;
+}
+
+div.luxury-room-type:hover{
+    cursor: pointer;
 }

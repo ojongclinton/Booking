@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Home.css'
-import {BsPlayCircle,BsFillCalendarMinusFill} from 'react-icons/bs'
-import {RiArrowDropDownLine} from 'react-icons/ri'
+import {BsPlayCircle} from 'react-icons/bs'
 import { Modal,Grid } from '@mui/material'
 import Button from '../SingleItems/Button/Button'
 
@@ -11,8 +10,10 @@ import CustomImagePositioned from '../SingleItems/Other/CustomImagePositioned'
 import room1 from '../../assets/pictures/welcome-section/room1.jpg'
 import room2 from '../../assets/pictures/welcome-section/room2.jpg'
 import LuxuryRooms from './LuxuryRooms'
+import { LocationContext } from '../../Hooks/LocationContext'
 
 function Home() {
+  const locationData = useContext(LocationContext)
   const[checkin,setCheckIn] = React.useState("mm/dd/yy")
   const[checkout,setCheckOut] = React.useState("mm/dd/yy")
   const[rooms,setRoom] = React.useState(2)
@@ -55,7 +56,7 @@ function Home() {
           <h3 className='image-text-line-1'>The Travelling Guidance <span className='image-text-line-2'>you always needed</span></h3>
           <Modal open={open} onClose={handleClick}>
             <div style={style}>
-              <iframe width="800" height="400" style={{border:'none'}}
+              <iframe width="800" height="400" style={{border:'none'}} title='video play'
               src="https://www.youtube.com/embed/tgbNymZ7vqY">
               </iframe>
             </div>
