@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './Home.css'
 import {BsPlayCircle} from 'react-icons/bs'
 import { Modal,Grid } from '@mui/material'
@@ -11,6 +11,7 @@ import room1 from '../../assets/pictures/welcome-section/room1.jpg'
 import room2 from '../../assets/pictures/welcome-section/room2.jpg'
 import LuxuryRooms from './LuxuryRooms'
 import { LocationContext } from '../../Hooks/LocationContext'
+import { useGetProductsQuery } from './LuxuryRoomSlice'
 
 function Home() {
   const locationData = useContext(LocationContext)
@@ -20,9 +21,14 @@ function Home() {
   const handleCheckin =(e)=>{
     let value = e.target.value;
     value = value.toString()
-
     setCheckIn(value)
   }
+
+  const {data, isLoading,error,isSuccess} = useGetProductsQuery();
+  console.log(
+    data, isLoading,error,isSuccess,
+  )
+
   const handleCheckOut =(e)=>{
     let value = e.target.value;
     value = value.toString()
