@@ -11,7 +11,7 @@ import room1 from '../../assets/pictures/welcome-section/room1.jpg'
 import room2 from '../../assets/pictures/welcome-section/room2.jpg'
 import LuxuryRooms from './LuxuryRooms'
 import { LocationContext } from '../../Hooks/LocationContext'
-import { useGetProductsQuery } from './LuxuryRoomSlice'
+// import { useGetProductsQuery } from './LuxuryRoomSlice'
 
 function Home() {
   const locationData = useContext(LocationContext)
@@ -24,10 +24,10 @@ function Home() {
     setCheckIn(value)
   }
 
-  const {data, isLoading,error,isSuccess} = useGetProductsQuery();
-  console.log(
-    data, isLoading,error,isSuccess,
-  )
+  // const {data, isLoading,error,isSuccess} = useGetProductsQuery();
+  // console.log(
+  //   data, isLoading,error,isSuccess,
+  // )
 
   const handleCheckOut =(e)=>{
     let value = e.target.value;
