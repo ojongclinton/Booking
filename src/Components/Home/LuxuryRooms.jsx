@@ -209,6 +209,9 @@ function LuxuryRooms() {
       <div >
         <p>{roomType}</p>
           {content}
+          {/* <div style={{backgroundImage:"url('https://images.trvl-media.com/lodging/25000000/24400000/24397200/24397163/9b248d8e.jpg')",height:"400px",width:"250px",backgroundSize:"cover"}}> */}
+
+
       </div>
 
   </div>

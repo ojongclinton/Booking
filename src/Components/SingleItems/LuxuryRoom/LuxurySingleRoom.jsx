@@ -62,6 +62,7 @@ function LuxurySingleRoom({room}) {
 
     //Getting and setting The image URL
     const [mouseIn,setMouseIn] = useState(false)
+    const image = room.propertyImage.image.url.split('?')[0];
 
       const parentDiv = css `
     height:357px;
@@ -69,7 +70,8 @@ function LuxurySingleRoom({room}) {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
     position:relative;
     background-color:none;
-    background-image:url(${room.propertyImage.image.url});
+    background-size:cover;
+    background-image:url(${image});
     background-position:center;
     background-repeat:no-repeat;
     transition:all 300ms ease-in;

@@ -23,12 +23,6 @@ function Home() {
     value = value.toString()
     setCheckIn(value)
   }
-
-  // const {data, isLoading,error,isSuccess} = useGetProductsQuery();
-  // console.log(
-  //   data, isLoading,error,isSuccess,
-  // )
-
   const handleCheckOut =(e)=>{
     let value = e.target.value;
     value = value.toString()
