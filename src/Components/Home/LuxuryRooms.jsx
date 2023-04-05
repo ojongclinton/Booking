@@ -1,54 +1,64 @@
-import { Grid,Slide } from '@mui/material'
 import React, { useState,useEffect } from 'react'
 import { CSSTransition,TransitionGroup } from 'react-transition-group'
 import './Home.css'
 import { useGetFilteredMutation } from './LuxuryRoomSlice'
 import LuxurySingleRoom from '../SingleItems/LuxuryRoom/LuxurySingleRoom'
+import Loading,{Error} from '../SingleItems/Loading/Loading'
+// import { deepSearchReplace,deleteEmptyKeys } from '../SingleItems/Other/Functions'
 
-const curerrentDate = new Date()
-//Deep Search algorithm!
-const deepSearchReplace = (target,keySearched,replaceValue) => {
-  if (typeof target === 'object') {
-      for (let key in target) {
-        if(Array.isArray(target[key]) && key ===keySearched){
-            target[key] = replaceValue
-        }
-          else if (typeof target[key] === 'object') {
-            deepSearchReplace(target[key],keySearched,replaceValue);
-          } else {
-              if (key === keySearched) {
-                  target[key] = replaceValue
-              }
 
-          }
+// const deepSearchReplace = (target,keySearched,replaceValue) => {
+//   console.log(`Changing ${keySearched}`)
+//   if (typeof target === 'object') {
+//       for (let key in target) {
+//         if(Array.isArray(target[key]) && key ===keySearched){
+//             target[key] = replaceValue
+//         }
+//           else if (typeof target[key] === 'object') {
+//             deepSearchReplace(target[key],keySearched,replaceValue);
+//           } else {
+//               if (key === keySearched) {
+//                   target[key] = replaceValue
+//               }
+
+//           }
+//       }
+//   }
+//   console.log('target below')
+//   console.log(target)
+//   return target
+// }
+
+function deleteEmptyKeys(o) {
+  for (var k in o) {
+    if (!o[k] || typeof o[k] !== "object") {
+      continue
+    }
+    deleteEmptyKeys(o[k]); 
+    if (Object.keys(o[k]).length === 0) {
+      delete o[k];
+    }
+  }
+    return o;
+}
+const deepSearchReplace = (obj, keyName, replacer) => {
+  for (const key in obj) {
+      if (key == keyName) {
+        console.log(`found ${key} , ${keyName}`)
+          obj[key] = replacer;
+      } else if (Array.isArray(obj[key])) {
+          (obj[key]).forEach(member => {
+            console.log(member)
+            return deepSearchReplace(member, keyName, replacer)});
+      } else if (typeof obj[key] === "object") {
+        deepSearchReplace(obj[key], keyName, replacer);
       }
   }
-  return target
-}
+  return obj
+};
 
-const deleteEmptyKeys = (target)=>{
-  if (typeof target === 'object') {
-    for (let key in target) {
-      if(Array.isArray(target[key]) && target[key].length == 0){
-          delete target[key]
-      }
-      else if(Array.isArray(target[key]) && target[key].length > 0){
-        deepSearchReplace(target[key]);
-      }
-        else if (typeof target[key] === 'object') {
-          if(Object.entries(target[key]).length == 0 ){
-            delete target[key]
-          }
-          else{
-            deepSearchReplace(target[key]);
-          }
-        }
-    }
-}
-return target
-}
-
-let hotelTypeBody = {
+const curerrentDate = new Date()
+const hotelTypeBody = {
   eapid: 1,
   locale: "en_US",
   siteId: 300000001,
@@ -68,10 +78,11 @@ let hotelTypeBody = {
   rooms: [
       {
           adults: 1,
+          children:[]
       }
   ],
   resultsStartingIndex: 0,
-  resultsSize: 200,
+  resultsSize: 5,
   sort: "PRICE_LOW_TO_HIGH",
   filters: {
       price: {
@@ -81,44 +92,22 @@ let hotelTypeBody = {
   },
   lodging:[],
   amenities:[],
-  bedroomFilter:[],
   mealPlan:[],
   travelerType:[],
   bedroomFilter:[],
   star:[]
 }
 
-const testRoomChange = [
-  {id:1,name:"Luxory 1",cate:"Luxory",price:"",height:200,width:400},
-  {id:2,name:"Luxory 2",cate:"Luxory",price:"",height:200,width:400},
-  {id:5,name:"Small Suite 2",cate:"Small Suite",price:"",height:200,width:400},
-  {id:8,name:"Family 1",cate:"Family",price:"",height:200,width:400},
-  {id:12,name:"Family 2",cate:"Family",price:"",height:200,width:400},
-
-]
-
 function LuxuryRooms() {
-    const roomTypes = ['All Rooms']
-    const [fetchData,{data,status,error,isLoading,isError}] = useGetFilteredMutation()
+    const roomTypes = ['All Rooms','Luxory','Small Suite','Family','Single']
+    const [fetchData,{data,status,error,isLoading,isError,isSuccess}] = useGetFilteredMutation()
 
-    testRoomChange.forEach(room=>{
-      if(!roomTypes.includes(room.cate)){
-        roomTypes.push(room.cate)
-      }
-    })
     const [roomType,setRoomType] = useState(roomTypes[0])
-    const [selectedRoomData,setRoomData] = useState(testRoomChange) 
+
 
     const handleRoomChange =(e)=>{
       let selectedType = e.target.innerText
       setRoomType(selectedType)
-
-      if(selectedType === 'All Rooms'){
-        setRoomData(testRoomChange)
-      }else{
-        const data = testRoomChange.filter(room=>room.cate === selectedType)
-        setRoomData(data)
-      }
       
     }
 
@@ -134,22 +123,24 @@ function LuxuryRooms() {
 
         case('Luxory'):
           let copy2 = {...hotelTypeBody,type:"luxory"}
+          copy2 = deepSearchReplace(copy2,'star',["40","50"])
           copy2 = deleteEmptyKeys(copy2)
-          fetchData(deepSearchReplace(copy2,'star',["40","50"]))
+          fetchData(copy2)
           break;
 
         case('Small Suite'):
           let copy3 = {...hotelTypeBody,type:"small suite"}
+          copy3 = deepSearchReplace(copy3,'bedroomFilter',["0"]);
           copy3 = deleteEmptyKeys(copy3)
-          fetchData(deepSearchReplace(copy3,'bedroomFilter',["0"]))
+          fetchData(copy3)
           break;
 
         case('Family'):
            let copy4 = {...hotelTypeBody,type:"family"}
            copy4 = deepSearchReplace(copy4,'adults',3)
-           copy4 = deepSearchReplace(copy4,'children',[{age:10},{age:10}])
-           copy4 = deleteEmptyKeys(copy4)
+           copy4.rooms[0].children = [{age:10},{age:10}]
            copy4 = deepSearchReplace(copy4,'travelerType',["FAMILY"])
+           copy4 = deleteEmptyKeys(copy4)
            fetchData(copy4)
          
          break;
@@ -166,11 +157,32 @@ function LuxuryRooms() {
       }
     },[roomType])
 
-let content;
+    let content
 
-if(isLoading){
-  content = <div> <p></p></div>
-}
+    if(isLoading){
+      content = <Loading />
+    }
+    else if (isError){
+      content = <Error/>
+    } else if(isSuccess){
+      if(data && data!=null && data.data.propertySearch.properties.length > 0 ){
+        const criteriaResults =  data.data.propertySearch.properties
+        content = 
+        <div>
+          <TransitionGroup className='theGroup'>
+        {criteriaResults.map((room,index)=>{
+          return(
+            <CSSTransition key={index} timeout={300} classNames="item">
+              <LuxurySingleRoom room={room} />
+            </CSSTransition>
+          )
+        })}
+        </TransitionGroup>
+
+        </div>
+      }
+      else isError = true;
+    }
 
   return (
   <div>
@@ -196,25 +208,7 @@ if(isLoading){
       </div>
       <div >
         <p>{roomType}</p>
-        <div >
-          <TransitionGroup className='theGroup'>
-        {selectedRoomData.slice(0,3).map((room,index)=>{
-          return(
-            <CSSTransition key={room.id} timeout={100} classNames="item">
-              <LuxurySingleRoom text={room.name} />
-            </CSSTransition>
-          )
-        })}
-        {selectedRoomData.slice(3,6).map((room,index)=>{
-          return(
-            <CSSTransition key={room.id} timeout={100} classNames="item">
-              <LuxurySingleRoom text={room.name} />
-            </CSSTransition>
-          )
-        })}
-        </TransitionGroup>
-        </div>
-        
+          {content}
       </div>
 
   </div>

@@ -135,50 +135,35 @@ div.luxury-room-type:hover{
 
 .item-enter { 
 /* This fires as soon ans the element enters the DOM */
-    color: red;
     opacity: 0;
-    transform: scale(0) ;
-    margin: 300px;
+    transform: scale(0);
 }
 .item-enter-active {
 /*THis is where you add the Transition*/
-    /* color: green; */
-    opacity: 1;
-    transform: scale(1) ;
-    transition: all 500ms ease-in;
+opacity: 1;
+transform: scale(1);
+transition: all 300ms ease-in;
+
 }
 .item-exit {
 /*This fires as soon as the showState is false*/
 
-    transform: scale(1) translate(0px, 0%);;
-    opacity: 0.1;
-    position: absolute;
-    /* color: white; */
-
+transform: scale(1);
+position: absolute;
 }
 .item-exit-active { /*Animation that should apply as the element is currently leaving the DOM*/
 /*Fires as element leaves the DOM*/
-    transform: scale(0) translate(0px, 130%);;
-    opacity: 0;
-    transition: all 500ms ease-in;
+transform: scale(0);
+transition: all 300ms ease-in-out;
 
 }
 
-
-div.single-item{ 
-    background-color: rebeccapurple;
-    margin: 10px;
-    padding: 10px;
-    height: 100px;
-    font-weight: 600;
-}
 div.theGroup{
-
+    position: relative;
     display: grid;
     row-gap: 10px;
     grid-template-columns: 1fr 2fr 1fr;
     height: fit-content;
-    transition: all ease-in-out 300ms;
 }
 div.secondgroup{
     grid-template-columns:  2fr 2fr;

@@ -3,17 +3,9 @@
 import { jsx } from '@emotion/react'
 import { css,keyframes } from '@emotion/react'
 import {AiOutlineRightCircle} from 'react-icons/ai'
-import { useState,useEffect } from 'react'
-import { Collapse,Fade  } from '@mui/material'
+import { useState} from 'react'
+import { Collapse} from '@mui/material'
 
-
-
-const style = css`
-  color: hotpink;
-`
-const growHeight = keyframes `
-
-`
 
 const priceDiv = css`
     p{
@@ -66,32 +58,21 @@ const contentContainer = css`
     margin:30px;
 `
 
-function LuxurySingleRoom() {
+function LuxurySingleRoom({room}) {
 
-    //Get The image URL
-    const [img, setImg] = useState();
+    //Getting and setting The image URL
     const [mouseIn,setMouseIn] = useState(false)
-    const fetchImage = async () => {
-        const res = await fetch("https://images.unsplash.com/photo-1661956601031-4cf09efadfce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80");
-        const imageBlob = await res.blob();
-        const imageObjectURL = URL.createObjectURL(imageBlob);
-        setImg(imageObjectURL);
-      };
-    
-      useEffect(() => {
-        fetchImage();
-      }, []);
-    
+
       const parentDiv = css `
     height:357px;
     margin:5px 10px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
     position:relative;
-    background-color:black;
-    background-image:url(${img});
+    background-color:none;
+    background-image:url(${room.propertyImage.image.url});
     background-position:center;
     background-repeat:no-repeat;
-    
+    transition:all 300ms ease-in;
     &:before{
         
             content: '';
@@ -103,9 +84,6 @@ function LuxurySingleRoom() {
             z-index: 0;
             background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(14, 19, 23, 0)), to(#0E1317));
     }
-
-    
-
     `
 
   return (
@@ -113,7 +91,7 @@ function LuxurySingleRoom() {
 
                 <Collapse in={mouseIn} collapsedSize={70} orientation="vertical" timeout={500} css={contentContainer}>
                             <div css={priceDiv}>{/*  Price section */}
-                                <p >$134 <span> / Night </span></p> 
+                                <p> {room.price.options[0].formattedDisplayPrice} <span> / {room.price.priceMessages[0].value}</span></p> 
                             </div>
                             <div css={nameDiv}>{/*  Name section */}
                                 <h3>Small Suite</h3>
