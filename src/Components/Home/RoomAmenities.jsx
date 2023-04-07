@@ -7,6 +7,7 @@ import {MdWifiPassword} from 'react-icons/md'
 import {TbMapSearch} from 'react-icons/tb'
 import {GiMagicBroom} from 'react-icons/gi'
 
+
 const styles = css`
     display:flex;
     gap:20px;

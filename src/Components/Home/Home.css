@@ -90,6 +90,9 @@ div.sectionSpaced{
 div.sectionNoSpace{
     padding: 0px;
 }
+div.sectionMidSpaced{
+    padding: 0px 120px;
+}
 div.tex3t-div{
     padding: 20px 0px;
 }
@@ -120,6 +123,7 @@ div.luxury-room-type{
 .type-active{
     background-color: #b89146 !important;
     color: white !important;
+    
 }
 
 div.luxury-room-type:hover{

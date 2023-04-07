@@ -158,7 +158,7 @@ function Home() {
         <div className='sectionSpaced'>
             <RoomAmenities />
         </div>
-        <div className='sectionSpaced'>
+        <div className='sectionMidSpaced'>
             <RoomAmenites2 />
         </div>
     </div>
