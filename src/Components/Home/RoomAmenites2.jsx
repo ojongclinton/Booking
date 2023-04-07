@@ -13,14 +13,28 @@ const amenities = [
         smallTitle:"Our Food",
         bigTitle:"Restaurant Silo",
         description:"Proin massa augue, lacinia at blandit ac, fringilla scelerisque tortor. Mauris sit amet lectus porta,",
-        picture:"feature-1.jpg",
+        picture:back1,
         direction:"PT"
     },
     {
-        smallTitle:"Our Food",
-        bigTitle:"Restaurant Silo",
+        smallTitle:"Read Our Books",
+        bigTitle:"The Library",
         description:"Proin massa augue, lacinia at blandit ac, fringilla scelerisque tortor. Mauris sit amet lectus porta,",
-        picture:"feature-2.jpg",
+        picture:back2,
+        direction:"TP"
+    },
+    {
+        smallTitle:"Fitness Equipment",
+        bigTitle:"Exercise equipment",
+        description:"Proin massa augue, lacinia at blandit ac, fringilla scelerisque tortor. Mauris sit amet lectus porta,",
+        picture:back3,
+        direction:"PT"
+    },
+    {
+        smallTitle:"Experiences",
+        bigTitle:"Swimming Pool",
+        description:"Proin massa augue, lacinia at blandit ac, fringilla scelerisque tortor. Mauris sit amet lectus porta,",
+        picture:back4,
         direction:"TP"
     }
 ]
@@ -30,7 +44,6 @@ const parentDiv=css`
     padding:90px 0px;
     display:flex;
     gap:50px;
-    // background-color:#eeeeee;
     position:relative;
     & h1 {
         color:white;
@@ -63,6 +76,11 @@ const parentDiv=css`
         left:10%;
     }
 `
+const textDiv = css`
+width:400px;
+padding:30px;
+z-index:1;
+`
 
 const PictureText=({amenity})=>{
     const pictureDiv = css`
@@ -71,15 +89,9 @@ const PictureText=({amenity})=>{
         background-image:url(${back1});
         background-position:center;
         background-repeat:no-repeat;
-        z-index:1;
-
-        
+        z-index:1;        
 `
-    const textDiv = css`
-        width:400px;
-        padding:30px;
-        z-index:1;
-    `
+
     return(
         <div css={parentDiv}>
             <div css={pictureDiv}>
@@ -94,8 +106,22 @@ const PictureText=({amenity})=>{
     )
 }
 const TextPicture=({amenity})=>{
+    const pictureDiv = css`
+    height:350px;
+    width:550px;
+    background-image:url(${back1});
+    background-position:center;
+    background-repeat:no-repeat;
+    z-index:1;        
+`
+const style =css `
+    &::before{
+        width:90% !important;
+        left:0px !important;
+    }
+`
     return(
-        <div css={parentDiv}>
+        <div css={[parentDiv,style]}>
             <div css={textDiv}>
                 <p className='gold'>{amenity.smallTitle}</p>
                 <h1>{amenity.bigTitle}</h1>
@@ -112,9 +138,16 @@ function RoomAmenites2() {
   return (
     <div>
         {amenities.map(amenityObj=>{
-            return(
-                <PictureText amenity={amenityObj}/>
-            )
+            if(amenityObj.direction == "TP"){
+                return(
+                    <TextPicture amenity={amenityObj}/>
+                )
+                }
+            else if(amenityObj.direction == "PT"){
+                return(
+                    <PictureText amenity={amenityObj}/>
+                )
+            }
         })}
     </div>
   )
