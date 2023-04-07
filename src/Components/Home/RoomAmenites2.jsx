@@ -86,10 +86,11 @@ const PictureText=({amenity})=>{
     const pictureDiv = css`
         height:350px;
         width:550px;
-        background-image:url(${back1});
+        background-image:url(${amenity.picture});
         background-position:center;
         background-repeat:no-repeat;
-        z-index:1;        
+        z-index:1;
+        background-size:cover;    
 `
 
     return(
@@ -109,10 +110,11 @@ const TextPicture=({amenity})=>{
     const pictureDiv = css`
     height:350px;
     width:550px;
-    background-image:url(${back1});
+    background-image:url(${amenity.picture});
     background-position:center;
     background-repeat:no-repeat;
-    z-index:1;        
+    z-index:1;
+    background-size:cover;   
 `
 const style =css `
     &::before{
@@ -143,7 +145,7 @@ function RoomAmenites2() {
                     <TextPicture amenity={amenityObj}/>
                 )
                 }
-            else if(amenityObj.direction == "PT"){
+            else{
                 return(
                     <PictureText amenity={amenityObj}/>
                 )
