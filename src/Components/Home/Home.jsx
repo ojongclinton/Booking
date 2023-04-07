@@ -3,7 +3,6 @@ import './Home.css'
 import {BsPlayCircle} from 'react-icons/bs'
 import { Modal,Grid } from '@mui/material'
 import Button from '../SingleItems/Button/Button'
-
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import CustomImagePositioned from '../SingleItems/Other/CustomImagePositioned'
@@ -11,6 +10,10 @@ import room1 from '../../assets/pictures/welcome-section/room1.jpg'
 import room2 from '../../assets/pictures/welcome-section/room2.jpg'
 import LuxuryRooms from './LuxuryRooms'
 import { LocationContext } from '../../Hooks/LocationContext'
+import VideoSection from './VideoSection'
+import RoomAmenities from './RoomAmenities'
+import RoomAmenites2 from './RoomAmenites2'
+
 // import { useGetProductsQuery } from './LuxuryRoomSlice'
 
 function Home() {
@@ -108,7 +111,7 @@ function Home() {
         </div>
 
       </div>
-      <div className='section'>
+      <div className='sectionSpaced'>
         <div>
           <Grid container spacing={2}>
             <Grid item xs={5}>
@@ -146,8 +149,17 @@ function Home() {
           </Grid>
         </div>
         </div>
-        <div className='section greyBack'>
+        <div className='sectionSpaced greyBack'>
             <LuxuryRooms />
+        </div>
+        <div className='sectionNoSpace videoSection'>
+            <VideoSection />
+        </div>
+        <div className='sectionSpaced'>
+            <RoomAmenities />
+        </div>
+        <div className='sectionSpaced'>
+            <RoomAmenites2 />
         </div>
     </div>
   )

@@ -9,12 +9,7 @@
     position: relative;
 }
 
-/* h3.image-text{
-    color: white;
-    font-size: 40px;
-    position: absolute;
-    top: 100px;
-} */
+
 div.image-text-container{
     font-size: 50px;
     color: white;
@@ -88,9 +83,12 @@ select option{
 .image-footer-select{
     color: blue;
 }
-div.section{
+div.sectionSpaced{
     padding: 120px;
     /* background-color: red; */
+}
+div.sectionNoSpace{
+    padding: 0px;
 }
 div.tex3t-div{
     padding: 20px 0px;
@@ -167,4 +165,45 @@ div.theGroup{
 }
 div.secondgroup{
     grid-template-columns:  2fr 2fr;
+}
+div.videoContainer{
+    height: 510px;
+    width: 100%;
+    background-color: black;
+    background-image: url(../../assets/pictures/fixed-background.jpg);
+    background-position: center;
+    background-attachment:fixed;
+    position: relative;
+
+}
+/* div.videoSection{
+    position: relative;
+} */
+div.videoContainer::after{
+    content: '';
+    background-color: #0E1317;
+    opacity: 0.7;
+    position: absolute;
+    height: 510px;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    
+}
+div.videoContainerContent{
+    color: white;
+    position: relative;
+    display: flex;
+    z-index: 10;
+    justify-content: space-around;
+    margin: auto;
+    padding-top: 30vh;
+}
+.videoContainerContent h2{
+    font-size: 50px;
+    line-height: 60px;
+    font-weight: 500;
+}
+div.videcoContainerText{
+    width: 700px;
 }

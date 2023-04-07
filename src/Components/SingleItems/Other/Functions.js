@@ -1,41 +1,27 @@
-export const deepSearchReplace = (target,keySearched,replaceValue) => {
-    if (typeof target === 'object') {
-        for (let key in target) {
-          if(Array.isArray(target[key]) && key ===keySearched){
-              target[key] = replaceValue
-          }
-            else if (typeof target[key] === 'object') {
-              deepSearchReplace(target[key],keySearched,replaceValue);
-            } else {
-                if (key === keySearched) {
-                    target[key] = replaceValue
-                }
-  
-            }
-        }
+export function deleteEmptyKeys(o) {
+  for (var k in o) {
+    if (!o[k] || typeof o[k] !== "object") {
+      continue
     }
-    return target
+    deleteEmptyKeys(o[k]); 
+    if (Object.keys(o[k]).length === 0) {
+      delete o[k];
+    }
   }
-  
-export const deleteEmptyKeys = (target)=>{
-    if (typeof target === 'object') {
-      for (let key in target) {
-        if(Array.isArray(target[key]) && target[key].length == 0){
-            delete target[key]
-        }
-        else if(Array.isArray(target[key]) && target[key].length > 0){
-          deepSearchReplace(target[key]);
-        }
-          else if (typeof target[key] === 'object') {
-            if(Object.entries(target[key]).length == 0 ){
-              delete target[key]
-            }
-            else{
-              deepSearchReplace(target[key]);
-            }
-          }
+    return o;
+}
+export const deepSearchReplace = (obj, keyName, replacer) => {
+  for (const key in obj) {
+      if (key == keyName) {
+        console.log(`found ${key} , ${keyName}`)
+          obj[key] = replacer;
+      } else if (Array.isArray(obj[key])) {
+          (obj[key]).forEach(member => {
+            console.log(member)
+            return deepSearchReplace(member, keyName, replacer)});
+      } else if (typeof obj[key] === "object") {
+        deepSearchReplace(obj[key], keyName, replacer);
       }
   }
-  return target
-  }
-
+  return obj
+};

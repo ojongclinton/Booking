@@ -4,58 +4,10 @@ import './Home.css'
 import { useGetFilteredMutation } from './LuxuryRoomSlice'
 import LuxurySingleRoom from '../SingleItems/LuxuryRoom/LuxurySingleRoom'
 import Loading,{Error} from '../SingleItems/Loading/Loading'
-// import { deepSearchReplace,deleteEmptyKeys } from '../SingleItems/Other/Functions'
+import { deepSearchReplace,deleteEmptyKeys } from '../SingleItems/Other/Functions'
 
 
-// const deepSearchReplace = (target,keySearched,replaceValue) => {
-//   console.log(`Changing ${keySearched}`)
-//   if (typeof target === 'object') {
-//       for (let key in target) {
-//         if(Array.isArray(target[key]) && key ===keySearched){
-//             target[key] = replaceValue
-//         }
-//           else if (typeof target[key] === 'object') {
-//             deepSearchReplace(target[key],keySearched,replaceValue);
-//           } else {
-//               if (key === keySearched) {
-//                   target[key] = replaceValue
-//               }
 
-//           }
-//       }
-//   }
-//   console.log('target below')
-//   console.log(target)
-//   return target
-// }
-
-function deleteEmptyKeys(o) {
-  for (var k in o) {
-    if (!o[k] || typeof o[k] !== "object") {
-      continue
-    }
-    deleteEmptyKeys(o[k]); 
-    if (Object.keys(o[k]).length === 0) {
-      delete o[k];
-    }
-  }
-    return o;
-}
-const deepSearchReplace = (obj, keyName, replacer) => {
-  for (const key in obj) {
-      if (key == keyName) {
-        console.log(`found ${key} , ${keyName}`)
-          obj[key] = replacer;
-      } else if (Array.isArray(obj[key])) {
-          (obj[key]).forEach(member => {
-            console.log(member)
-            return deepSearchReplace(member, keyName, replacer)});
-      } else if (typeof obj[key] === "object") {
-        deepSearchReplace(obj[key], keyName, replacer);
-      }
-  }
-  return obj
-};
 
 const curerrentDate = new Date()
 const hotelTypeBody = {
@@ -99,7 +51,7 @@ const hotelTypeBody = {
 }
 
 function LuxuryRooms() {
-    const roomTypes = ['All Rooms','Luxory','Small Suite','Family','Single']
+    const roomTypes = ['Popular','Luxory','Small Suite','Family','Single']
     const [fetchData,{data,status,error,isLoading,isError,isSuccess}] = useGetFilteredMutation()
 
     const [roomType,setRoomType] = useState(roomTypes[0])
@@ -115,8 +67,8 @@ function LuxuryRooms() {
       const abortSignal = new AbortController()
       
       switch(roomType){
-        case('All Rooms'):
-          let copy1 = {...hotelTypeBody,type:"all rooms"}
+        case('Popular'):
+          let copy1 = {...hotelTypeBody,type:"Popular"}
           copy1 = deleteEmptyKeys(copy1)
           fetchData(copy1)
           break;
@@ -195,23 +147,17 @@ function LuxuryRooms() {
         </div>
         <div className='flex-btw'>
           {
-          
           roomTypes.map(room=>(
           <div key={room} onClick={handleRoomChange} className={room===roomType?'luxury-room-type type-active':'luxury-room-type'}>
             <p>{room}</p>
-
             <div></div>
           </div>
-            
           ))}
         </div>
       </div>
       <div >
         <p>{roomType}</p>
           {content}
-          {/* <div style={{backgroundImage:"url('https://images.trvl-media.com/lodging/25000000/24400000/24397200/24397163/9b248d8e.jpg')",height:"400px",width:"250px",backgroundSize:"cover"}}> */}
-
-
       </div>
 
   </div>

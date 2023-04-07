@@ -15,7 +15,7 @@ export const apiSlice = createApi({
             // headers.set('X-RapidAPI-Host','hotels4.p.rapidapi.com')
         }
     }),
-    tagTypes:["all rooms","luxory","small suite","family","single"],
+    tagTypes:["Popular","luxory","small suite","family","single"],
 
     endpoints: () => ({})
 })
