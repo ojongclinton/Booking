@@ -7,6 +7,8 @@ import './App.css'
 import LocationContextProvider from './Hooks/LocationContextProvider';
 import { store } from './store/store';
 
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

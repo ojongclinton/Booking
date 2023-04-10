@@ -13,7 +13,8 @@ import { LocationContext } from '../../Hooks/LocationContext'
 import VideoSection from './VideoSection'
 import RoomAmenities from './RoomAmenities'
 import RoomAmenites2 from './RoomAmenites2'
-
+import UserInfo from './UserInfo'
+import BlogNews from './BlogNews'
 // import { useGetProductsQuery } from './LuxuryRoomSlice'
 
 function Home() {
@@ -161,6 +162,12 @@ function Home() {
         <div className='sectionMidSpaced'>
             <RoomAmenites2 />
         </div>
+        <div className='sectionMidSpaced'>
+            <BlogNews />
+        </div>
+        {/* <div className='sectionSpaced'>
+            <UserInfo />
+        </div> */}
     </div>
   )
 }

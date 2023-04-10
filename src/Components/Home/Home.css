@@ -59,6 +59,10 @@ p.gold{
     color: #b89146;
     font-weight: 700;
 }
+p.black{
+    color: #0e1317;
+    font-weight: 700;
+}
 
 
 
@@ -210,4 +214,11 @@ div.videoContainerContent{
 }
 div.videcoContainerText{
     width: 700px;
+}
+div.pic-zoom-anim{
+    background-size: 100%;
+    transition: background-size 0.3s ease-in-out;
+}
+div.pic-zoom-anim:hover{
+    background-size: 110%;
 }

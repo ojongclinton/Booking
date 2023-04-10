@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Button.module.css'
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi';
 
-function Button({text='submit',from='#b89146',to='white', textTo='white', textFrom='black', big=false ,width='auto',border=false,showBg=true}) {
+function Button({text='submit',from='#b89146',to='white', textTo='white', textFrom='black', big=false,small=false ,width='auto',border=false,showBg=true}) {
 const [hover,setHover] = React.useState(false);
 
 
@@ -13,7 +13,7 @@ const [hover,setHover] = React.useState(false);
         backgroundSize: '230% 80%',
         backgroundPosition:hover?'left bottom':'right bottom',
         alignItems:'center',
-        padding:'15px 40px',
+        padding: small?'0px':'15px 40px',
         cursor:'pointer',
         transition: 'all .5s ease-out',
         width:`${width}`,

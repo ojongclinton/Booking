@@ -14,7 +14,7 @@ export const Error=()=>{
     return(
         <div style={{display:'flex',flexDirection:'column',gap:'20px',alignItems:'center'}}>
             
-                <h3>An Error occured and the Data could not be Loaded!</h3>
+                <h3>An Error occured and the Data could not be Fetched from Api</h3>
                 <BiErrorCircle size={60} color='red'/>
             
         </div>
