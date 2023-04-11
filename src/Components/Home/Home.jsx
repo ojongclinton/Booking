@@ -165,9 +165,9 @@ function Home() {
         <div className='sectionMidSpaced'>
             <BlogNews />
         </div>
-        {/* <div className='sectionSpaced'>
+        <div className='sectionSpaced'>
             <UserInfo />
-        </div> */}
+        </div>
     </div>
   )
 }

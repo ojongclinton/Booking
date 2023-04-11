@@ -93,7 +93,7 @@ console.log(mouseIn)
 
 function BlogNews() {
   return (
-    <div>
+    <div style={{height:'400px'}}>
         <div className='text-center tex3t-div' css={parentDiv}>
             <p className='gold'>Our Blog</p>
             <h2>Read Our Blog And News</h2>

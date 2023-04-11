@@ -8,7 +8,9 @@
     background-position: 0px;
     position: relative;
 }
-
+li,ul,ol{
+    list-style-type: none;
+}
 
 div.image-text-container{
     font-size: 50px;
@@ -221,4 +223,10 @@ div.pic-zoom-anim{
 }
 div.pic-zoom-anim:hover{
     background-size: 110%;
+}
+.theDotClass{
+    width: fit-content;
+    position:relative;
+    left: 260px;
+    bottom:100px;
 }
