@@ -1,5 +1,4 @@
 import React from 'react'
-import styles from './Button.module.css'
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi';
 
 function Button({text='submit',from='#b89146',to='white', textTo='white', textFrom='black', big=false,small=false ,width='auto',border=false,showBg=true}) {

@@ -23,6 +23,13 @@
     padding: 13px 40px;
     font-weight: 600;
 }
+button:hover,
+.button:hover{
+    cursor: pointer;
+    color: black;
+    background-color: white;
+    transition: .3s;
+}
 .text-center{
     text-align: center;
 }

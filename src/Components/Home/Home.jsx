@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext} from 'react'
 import './Home.css'
 import {BsPlayCircle} from 'react-icons/bs'
 import { Modal,Grid } from '@mui/material'
@@ -15,7 +15,6 @@ import RoomAmenities from './RoomAmenities'
 import RoomAmenites2 from './RoomAmenites2'
 import UserInfo from './UserInfo'
 import BlogNews from './BlogNews'
-// import { useGetProductsQuery } from './LuxuryRoomSlice'
 
 function Home() {
   const locationData = useContext(LocationContext)
