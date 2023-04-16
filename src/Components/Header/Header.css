@@ -3,7 +3,7 @@
     color: white;
     position: absolute;
     width: 100%;
-    background-size: cover;
+
     border-bottom: 1px solid #373939;
     z-index: 20;
 }
@@ -11,9 +11,7 @@
 .sticky-box{
     background-color: #0e1317;
     height: 120px;
-    /* width: 100%; */
-    width: 100vw;
-    max-width: 100vw;
+    width: 100%;
     color: white;
     border-bottom: 1px solid grey;
     position: fixed;
@@ -64,4 +62,38 @@ a.bigButton{
 .header-box .links a:hover{
     color: #b89146;
     transition: .4s;
+}
+
+/*------------------------------------------
+  Responsive Grid Media Queries - 1280, 1024, 768, 480
+   1280-1024   - desktop (default grid)
+   1024-768    - tablet landscape
+   768-480     - tablet 
+   480-less    - phone landscape & smaller
+--------------------------------------------*/
+@media all and (min-width: 1024px){ /* Desktop Displays */
+
+ }
+
+ @media all and (max-width:1024px){
+    div.header-box{
+        width: 90%;
+        padding: 0px 5%;
+    }
+    div.sticky-box{
+        width: 90%;
+        padding: 0px 5%;
+    }
+ }
+ 
+@media all and (min-width: 768px) and (max-width: 1024px) { /* Tablet Display */
+    
+}
+ 
+@media all and (min-width: 480px) and (max-width: 768px) { /* Tablet and some big ass phones */
+
+}
+ 
+@media all and (max-width: 480px) { /* Telephone landscape and smaller stuffs */
+
 }

@@ -1,24 +1,30 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './Header.css'
 import Button from '../SingleItems/Button/Button'
 import {GiMountaintop} from 'react-icons/gi'
 import Sign from './Sign/Sign'
+import { MediaQueryContext } from '../../Hooks/MediaQueryContext'
+import MobileHeader from './MobileHeader'
+
 
 function Header() {
 
+  const MQ = useContext(MediaQueryContext) //Context to query device of client
+  
   const [scroll,setScroll] = React.useState('absolute')
   useEffect(() => {
     const handleScroll = (e) => {
       setScroll(window.scrollY);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  return (
+  let content = !MQ.DT?(
+    <MobileHeader scroll={scroll}/>
+  ):(
     <div className={scroll>200?'sticky-box flex-arn flex-cnt':'header-box flex-arn flex-cnt'}>
       <div className='flex-arn flex-cnt'>
         <GiMountaintop size={40} />
@@ -33,11 +39,17 @@ function Header() {
           <Sign text='Contact'/>
         </div>
       </div>
-      <div>
+      <div className='headerButtonContainer'>
         {/* <button>BOOK NOW <AiOutlineArrowRight/></button> */}
         <Button text='BOOK NOW'/>
       </div>
     </div>
+  )
+
+  return (
+    <>
+      {content}
+    </>
   )
 }
 

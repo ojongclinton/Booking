@@ -36,6 +36,7 @@ div.image-foot-container{
     bottom: 0px;
     display: flex;
     justify-content: space-around;
+    display: none;
 }
 div.image-footer-single-grid{
     padding: 25px;
@@ -92,12 +93,15 @@ select option{
 div.sectionSpaced{
     padding: 120px;
     /* background-color: red; */
+    display: none;
 }
 div.sectionNoSpace{
     padding: 0px;
+    display: none;
 }
 div.sectionMidSpaced{
     padding: 0px 120px;
+    display: none;
 }
 div.tex3t-div{
     padding: 20px 0px;
@@ -229,4 +233,36 @@ div.pic-zoom-anim:hover{
     position:relative;
     left: 260px;
     bottom:100px;
+}
+/*------------------------------------------
+  Responsive Grid Media Queries - 1280, 1024, 768, 480
+   1280-1024   - desktop (default grid)
+   1024-768    - tablet landscape
+   768-480     - tablet 
+   480-less    - phone landscape & smaller
+--------------------------------------------*/
+@media all and (max-width:1024px){
+    div.image-text-container{
+
+    }
+
+    div.image-text-line-2{
+
+    }
+    
+    div.image-text-container svg{
+
+    }
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) { /* Tablet Display */
+   
+}
+
+@media all and (min-width: 480px) and (max-width: 768px) { /* Tablet and some big ass phones */
+
+}
+
+@media all and (max-width: 480px) { /* Telephone landscape and smaller stuffs */
+
 }
