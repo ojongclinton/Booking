@@ -15,9 +15,12 @@ import RoomAmenities from './RoomAmenities'
 import RoomAmenites2 from './RoomAmenites2'
 import UserInfo from './UserInfo'
 import BlogNews from './BlogNews'
+import { MediaQueryContext } from '../../Hooks/MediaQueryContext'
 
 function Home() {
   const locationData = useContext(LocationContext)
+  const media = useContext(MediaQueryContext)
+  console.log(media)
   const[checkin,setCheckIn] = React.useState("mm/dd/yy")
   const[checkout,setCheckOut] = React.useState("mm/dd/yy")
   const[rooms,setRoom] = React.useState(2)
@@ -67,7 +70,7 @@ function Home() {
         </div>
         <div className='image-foot-container'>
           <Grid container spacing={0}>
-            <Grid item xs={3}>
+            <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
               <div className='image-footer-single-grid'>
                 <div>
                   <p className='white'>Check in</p>
@@ -77,7 +80,7 @@ function Home() {
                 </div>
               </div>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
             <div className='image-footer-single-grid'>
                 <div>
                   <p className='white'>Check out</p>
@@ -87,7 +90,7 @@ function Home() {
                 </div>
               </div>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
             <div className='image-footer-single-grid'>
                 <div>
                   <p className='white'>Room</p>
@@ -102,7 +105,7 @@ function Home() {
                 </div>
               </div>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xl={3} lg={3} md={6} sm={6} xs={12}>
             <div className='image-footer-single-grid-button'>
                   <Button text='CHECK NOW' big={true}/>
               </div>
@@ -111,10 +114,11 @@ function Home() {
         </div>
 
       </div>
+      
       <div className='sectionSpaced'>
         <div>
           <Grid container spacing={2}>
-            <Grid item xs={5}>
+            <Grid item xl={5} lg={6} md={6} sm={12} xs={12}>
               <div className='tex3t-div'>
                 <p className='small gold'>Accomodations</p>
                 <h2>Welcome Our Hotels And Resorts</h2>
@@ -122,34 +126,32 @@ function Home() {
                 <Button text='CHECK NOW' width='fit-content' to='#0e1317' textFrom='white'/>
               </div>
             </Grid>
-            <Grid item xs={7}>
-              <div className='images' style={{position:'relative'}}>
+            <Grid item xl={7} lg={6} md={6} sm={12} xs={12}>
+              <div className='images' style={{position:'relative',height:media.DT?'100%':'50vh'}}>
                 <CustomImagePositioned 
                   image={room1}
                   height='400px'
-                  width='500px'
+                  width={media.DT?'500px':'100%'}
                   top="85px"
                   left={0}
                   right={0}
                   bottom={0}
-                  text="yoooo"
                 />
                 <CustomImagePositioned 
                   image={room2}
                   height='300px'
-                  width='400px'
+                  width={media.DT?'400px':'80%'}
                   top="0px"
                   left="auto"
                   right="0px"
                   bottom="auto"
-                  text="yoooo"
                 />
               </div>
             </Grid>
           </Grid>
         </div>
         </div>
-        <div className='sectionSpaced greyBack'>
+         <div className='sectionSpaced greyBack'>
             <LuxuryRooms />
         </div>
         <div className='sectionNoSpace videoSection'>
@@ -158,7 +160,7 @@ function Home() {
         <div className='sectionSpaced'>
             <RoomAmenities />
         </div>
-        <div className='sectionMidSpaced'>
+       {/* <div className='sectionMidSpaced'>
             <RoomAmenites2 />
         </div>
         <div className='sectionMidSpaced'>
@@ -166,7 +168,7 @@ function Home() {
         </div>
         <div className='sectionSpaced'>
             <UserInfo />
-        </div>
+        </div> */}
     </div>
   )
 }

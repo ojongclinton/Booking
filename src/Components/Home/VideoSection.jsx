@@ -1,8 +1,8 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import './Home.css'
 import {BsPlayCircle} from 'react-icons/bs'
 import { Modal } from '@mui/material'
-
+import { MediaQueryContext } from '../../Hooks/MediaQueryContext'
 
 
 function VideoSection() {
@@ -10,6 +10,8 @@ function VideoSection() {
     const handleClick = ()=>{
       setOpen(val=>!val)
     }
+
+    const medias = useContext(MediaQueryContext);
 
     const style = {
         position: 'absolute',
@@ -22,18 +24,28 @@ function VideoSection() {
         outline:'none'
       };
 
+      const iframeStyle = {
+        width:medias.DT?"800px":"90%",
+        height:medias.DT?"400px":"300px",
+        border:"none",
+        position:medias.DT?"unset":"relative",
+        left:"70px"
+
+      }
+
+
   return (
     <div className='videoContainer'>
         <div className='videoContainerContent'>
             <div className='videcoContainerText'>
                 <h2>Book hotel rooms, get deals & book flights online.</h2>
             </div>
-            <div>
+            <div className='videoContainer-iconContainer'>
              <BsPlayCircle size={130} onClick={handleClick} />
             </div>
             <Modal open={open} onClose={handleClick}>
             <div style={style}>
-              <iframe width="800" height="400" style={{border:'none'}} title='video play'
+              <iframe style={{...iframeStyle}} title='video play'
               src="https://www.youtube.com/embed/tgbNymZ7vqY">
               </iframe>
             </div>

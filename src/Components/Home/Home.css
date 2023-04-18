@@ -30,13 +30,13 @@ div.image-text-container svg{
     cursor: pointer;
 }
 div.image-foot-container{
+    width: 83%;
     position: absolute;
-    /* max-width: 1000px; */
-    left: 7%;
-    bottom: 0px;
-    display: flex;
-    justify-content: space-around;
-    display: none;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 div.image-footer-single-grid{
     padding: 25px;
@@ -93,11 +93,10 @@ select option{
 div.sectionSpaced{
     padding: 120px;
     /* background-color: red; */
-    display: none;
 }
 div.sectionNoSpace{
     padding: 0px;
-    display: none;
+
 }
 div.sectionMidSpaced{
     padding: 0px 120px;
@@ -112,7 +111,6 @@ div.tex3t-div>*{
 div.tex3t-div h2{
     font-size: 45px;
     font-weight: 500;
-
 }
 div.greyBack{
     background-color:#f7f7f7;
@@ -177,9 +175,6 @@ div.theGroup{
     grid-template-columns: 1fr 2fr 1fr;
     height: fit-content;
 }
-div.secondgroup{
-    grid-template-columns:  2fr 2fr;
-}
 div.videoContainer{
     height: 510px;
     width: 100%;
@@ -190,9 +185,6 @@ div.videoContainer{
     position: relative;
 
 }
-/* div.videoSection{
-    position: relative;
-} */
 div.videoContainer::after{
     content: '';
     background-color: #0E1317;
@@ -241,28 +233,161 @@ div.pic-zoom-anim:hover{
    768-480     - tablet 
    480-less    - phone landscape & smaller
 --------------------------------------------*/
-@media all and (max-width:1024px){
-    div.image-text-container{
-
-    }
-
-    div.image-text-line-2{
-
-    }
-    
+@media all and (max-width:1200px) and (min-width: 1024px){
     div.image-text-container svg{
+        position: absolute;
+        right: 100px;
+    }
+    div.image-foot-container{
+        width: 80%;
+        bottom: 0;
+        margin-left: auto;
+        margin-right: auto;
+        
+    }
+}
 
+@media all and (max-width:1024px){
+    p{
+        line-height:25px;;
+    }
+    div.image-text-container{
+        max-width: 100%;
+        width: 90%;
+        height: 100vh;
+        padding: 0px 10px;
+        padding-top: 250px;
+        font-size: 40px;
+        text-align: center;
+    }
+
+    span.image-text-line-2{
+        padding-left: 0px;
+    }
+
+    div.image-text-container svg{
+        position: unset;
+    }
+    div.image-section{
+        height: fit-content;
+        background-position: 30%;
+    }
+    div.image-foot-container{
+        bottom: 0;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 500px;
+    }
+    div.image-footer-single-grid{
+        min-width: 200px;
+        
+    }
+    div.image-footer-single-grid-button{
+        padding: auto;
+    }
+    div.sectionSpaced{
+        padding: 30px;
+        margin-top: 50px;
+    }
+    div.tex3t-div{
+        padding: 10px 0px;
+    }
+    div.tex3t-div>*{
+        margin-bottom: 15px;
+    }
+    div.tex3t-div h2{
+        font-size: 35px;
+        font-weight: 500;
+    }
+    div.theGroup{
+        row-gap: 0px;
+        column-gap: 10px;
+        grid-template-columns: 1fr 1fr;
+    }
+    div.luxury-room-type{
+        margin: 10px;
+    }
+    div.videoContainer{
+        background-position: 30%;
+    }
+    div.videoContainerContent{
+        padding: 100px;
     }
 }
 
 @media all and (min-width: 768px) and (max-width: 1024px) { /* Tablet Display */
-   
+    div.luxury-room-type{
+        margin: 10px;
+    }
 }
 
 @media all and (min-width: 480px) and (max-width: 768px) { /* Tablet and some big ass phones */
-
+    div.luxury-room-type{
+        margin: 10px;
+    }
+    .videoContainerContent h2{
+        font-size: 45px;
+        line-height: 60px;
+        font-weight: 500;
+    }
+    div.videcoContainerText{
+        width: 100%;
+        text-align: center;
+    }
+    div.videoContainerText h2{
+        display: none;
+    }
+    div.videoContainerContent{
+        width: 100%;
+        display: block;
+        padding: 0px;
+        padding-top: 50px;
+    }
+    .videoContainerContent h2{
+        font-size: 40px;
+    }
+    div.luxury-room-type{
+        margin: 10px;
+    }
+    div.videoContainer-iconContainer{
+        margin: auto;
+        width: fit-content;
+        margin-top: 60px;
+    }
+    div.videoContainer{
+        height: 450px;
+    }
+    div.videoContainer::after{
+        height: 450px;
+    }
 }
 
 @media all and (max-width: 480px) { /* Telephone landscape and smaller stuffs */
-
+    div.image-text-container{
+        font-size: 30px;    
+    }
+    .videoContainerContent h2{
+        font-size: 35px;
+        line-height: 60px;
+        font-weight: 600;
+    }
+    div.videcoContainerText{
+        font-size: 10px;
+        width: 100%;
+        text-align: center;
+    }
+    div.videoContainerContent{
+        width: 100%;
+        display: block;
+        padding: 0px;
+        padding-top: 30px;
+    }
+    div.luxury-room-type{
+        margin: 10px;
+    }
+    div.videoContainer-iconContainer{
+        margin: auto;
+        width: fit-content;
+        margin-top: 60px;
+    }
 }

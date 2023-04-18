@@ -2,13 +2,40 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/react'
 import { css } from '@emotion/react'
-import React from 'react'
 import {MdWifiPassword} from 'react-icons/md'
 import {TbMapSearch} from 'react-icons/tb'
 import {GiMagicBroom} from 'react-icons/gi'
+import { MediaQueryContext } from '../../Hooks/MediaQueryContext'
+import { useContext } from 'react'
 
 
-const styles = css`
+const amenities = [
+    {
+        name:"Room Cleaning",
+        icon:<GiMagicBroom size={35} color='#b89146'/>,
+        description:"Proin massa augue, lacinia at blandit ac, fringilla scelerisque tortor"
+    },
+    {
+        name:"Room Wifi",
+        icon:<MdWifiPassword size={35} color='#b89146'/>,
+        description:"Proin massa augue, lacinia at blandit ac, fringilla scelerisque tortor"
+    },
+    {
+        name:"Pickup & Drop",
+        icon:<TbMapSearch size={35} color='#b89146'/>,
+        description:"Proin massa augue, lacinia at blandit ac, fringilla scelerisque tortor"
+    }
+]
+
+function RoomAmenities() {
+    const medias = useContext(MediaQueryContext)
+
+    const parentContainer = css `
+        display:${medias.DT?"flex":"unset"};
+        justify-content:space-between;
+    `
+
+    const styles = css`
     display:flex;
     gap:20px;
     width:350px;
@@ -32,30 +59,11 @@ const styles = css`
     }
 `
 
-const amenities = [
-    {
-        name:"Room Cleaning",
-        icon:<GiMagicBroom size={35} color='#b89146'/>,
-        description:"Proin massa augue, lacinia at blandit ac, fringilla scelerisque tortor"
-    },
-    {
-        name:"Room Wifi",
-        icon:<MdWifiPassword size={35} color='#b89146'/>,
-        description:"Proin massa augue, lacinia at blandit ac, fringilla scelerisque tortor"
-    },
-    {
-        name:"Pickup & Drop",
-        icon:<TbMapSearch size={35} color='#b89146'/>,
-        description:"Proin massa augue, lacinia at blandit ac, fringilla scelerisque tortor"
-    }
-]
-
-function RoomAmenities() {
   return (
-    <div className='flex-btw'>
+    <div css={parentContainer}>
         {amenities.map((amenitiy,index)=>{
             return(
-                <div css={styles}>
+                <div css={styles} key={index}>
                     <div className='ammenityIcon'>
                         {amenitiy.icon}
                     </div>

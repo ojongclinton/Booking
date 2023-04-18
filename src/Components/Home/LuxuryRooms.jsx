@@ -1,11 +1,14 @@
-import React, { useState,useEffect } from 'react'
+/** @jsxRuntime classic */
+/** @jsx jsx */
+import { jsx,css } from '@emotion/react'
+import React, { useState,useEffect, useContext } from 'react'
 import { CSSTransition,TransitionGroup } from 'react-transition-group'
 import './Home.css'
 import { useGetFilteredMutation } from './LuxuryRoomSlice'
 import LuxurySingleRoom from '../SingleItems/LuxuryRoom/LuxurySingleRoom'
 import Loading,{Error} from '../SingleItems/Loading/Loading'
 import { deepSearchReplace,deleteEmptyKeys } from '../SingleItems/Other/Functions'
-
+import { MediaQueryContext } from '../../Hooks/MediaQueryContext'
 
 
 
@@ -51,11 +54,24 @@ const hotelTypeBody = {
 }
 
 function LuxuryRooms() {
-    const roomTypes = ['Popular','Luxory','Small Suite','Family','Single']
+    const media = useContext(MediaQueryContext)
+    const roomTypes = ['Popular','Luxory','Suites','Family','Single']
     const [fetchData,{data,status,error,isLoading,isError,isSuccess}] = useGetFilteredMutation()
-
     const [roomType,setRoomType] = useState(roomTypes[0])
 
+
+    const typeStyle = css`
+      display:${media.DT?'flex':'grid'};
+      justify-content:space-between;
+      grid-template-columns:${media.TB?'1fr 1fr 1fr 1fr 1fr':media.BP?'1fr 1fr 1fr 1fr':'1fr 1fr 1fr'};
+      width:${media.DT?'auto':'fit-content'};
+      margin:${media.DT?'unset':'auto'};
+    `
+
+    const parentContainer = css `
+      display:${media.DT?'flex':'block'};
+      justify-content:space-between;
+    `
 
     const handleRoomChange =(e)=>{
       let selectedType = e.target.innerText
@@ -80,8 +96,8 @@ function LuxuryRooms() {
           fetchData(copy2)
           break;
 
-        case('Small Suite'):
-          let copy3 = {...hotelTypeBody,type:"small suite"}
+        case('Suites'):
+          let copy3 = {...hotelTypeBody,type:"Suites"}
           copy3 = deepSearchReplace(copy3,'bedroomFilter',["0"]);
           copy3 = deleteEmptyKeys(copy3)
           fetchData(copy3)
@@ -138,14 +154,14 @@ function LuxuryRooms() {
 
   return (
   <div>
-      <div className='flex-btw'>
+      <div css={parentContainer}>
         <div>
-          <div className='tex3t-div'>
+          <div className='tex3t-div' style={{textAlign:media.DT?'unset':'center'}}>
           <p className='small gold'>Deluxe And Luxury</p>
           <h2>Our Luxury Rooms</h2>
           </div>
         </div>
-        <div className='flex-btw'>
+        <div css={typeStyle}>
           {
           roomTypes.map(room=>(
           <div key={room} onClick={handleRoomChange} className={room===roomType?'luxury-room-type type-active':'luxury-room-type'}>
