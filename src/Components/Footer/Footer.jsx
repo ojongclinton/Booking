@@ -5,11 +5,12 @@ import {FaFacebookF,FaInstagram,FaTwitter,FaLinkedin} from 'react-icons/fa'
 import {MdLocationPin} from 'react-icons/md'
 import {BsFillEnvelopePaperFill,BsFillTelephoneFill} from 'react-icons/bs'
 import Button from '../SingleItems/Button/Button'
+import { Grid } from '@mui/material'
 
 function Footer() {
   return (
     <div className='footerDivContainer'>
-      <div className='footerFirstSection'>
+      <Grid container spacing={1} className='footerFirstSection'>
         <div>
           <div style={{display:'flex',gap:'5px'}}>
             <GiMountaintop size={40}/>
@@ -43,7 +44,7 @@ function Footer() {
           <input type="email" placeholder='example@email.com'/>
           <button>SUBSCRIBE</button>
         </div>
-      </div>
+      </Grid>
       <div className='footerSecondSection'>
           <div>
             <p>Copyright © 2023 <span>Booking</span>  Website by <span>Ojong</span></p>
