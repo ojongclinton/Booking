@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Footer.css'
 import {GiMountaintop} from 'react-icons/gi'
 import {FaFacebookF,FaInstagram,FaTwitter,FaLinkedin} from 'react-icons/fa'
@@ -6,8 +6,12 @@ import {MdLocationPin} from 'react-icons/md'
 import {BsFillEnvelopePaperFill,BsFillTelephoneFill} from 'react-icons/bs'
 import Button from '../SingleItems/Button/Button'
 import { Grid } from '@mui/material'
+import { MediaQueryContext } from '../../Hooks/MediaQueryContext'
+
+
 
 function Footer() {
+  const medias = useContext(MediaQueryContext)
   return (
     <div className='footerDivContainer'>
       <Grid container spacing={1} className='footerFirstSection'>
