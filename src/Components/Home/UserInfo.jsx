@@ -1,9 +1,10 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react'
-import React from 'react'
+import React, { useContext } from 'react'
 import Slider from 'react-slick'
 import back2 from '../../assets/pictures/Blog/blog-1.jpg'
+import { MediaQueryContext } from '../../Hooks/MediaQueryContext'
 
 const details = [
   {
@@ -26,11 +27,16 @@ const details = [
   }
 ]
 
-const parentDiv = css `
-  height: 350px;
+
+
+function UserInfo() {
+  const medias = useContext(MediaQueryContext)
+
+  const parentDiv = css `
+  height: ${medias.SM || medias.BP?"fit-content":"350px"};
   width:100%;
   background-color:#0e1317;
-  padding:30px;
+  padding:${medias.DT?"30px":"0px"};
 `
 const divDotsContainer =css `
  ul{
@@ -65,23 +71,24 @@ div{
 `
 const detailDivContainer =css `
   padding:25px;
-  display:flex;
+  display:${medias.SM || medias.BP?"unset":"flex"};
   gap:40px;
 `
 const detailNameDiv = css `
   font-weight:600;
   color:white;
   margin-bottom:30px;
+  text-align:${medias.SM || medias.BP?"center":"left"}
 `
 const detailTextDiv = css `
-  font-weight:400;
+  font-weight:500;
   color:white;
-  width:60vw;
-  line-height:30px;
-  font-size:20px;
+  width:${medias.SM || medias.BP?"95%":"60vw"};
+  line-height:${medias.SM || medias.BP?"40px":"30px"};
+  font-size:${medias.SM || medias.BP?"16px":"20px"};
+  text-align:${medias.SM || medias.BP?"center":"left"};
+  margin:${medias.SM || medias.BP?"auto":"unset"}
 `
-
-function UserInfo() {
 
   const [currSlide,setCurrSlide] = React.useState(0)
 
@@ -125,11 +132,13 @@ function UserInfo() {
           const detailPicDiv =css`
             height:300px;
             width:200px;
+            min-width:200px;
             background-image:url(${detail.picture});
             background-size:cover;
             background-position:center;
             background-repeat:no-repeat;
             border-radius:150px;
+            margin:${medias.SM || medias.BP?"auto":"unset"};
           `
           return(
             <div >

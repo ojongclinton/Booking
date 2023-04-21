@@ -1,12 +1,13 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react'
-import React from 'react'
+import React,{useContext} from 'react'
 import back1 from '../../assets/pictures/amenity2/feature-1.jpg'
 import back2 from '../../assets/pictures/amenity2/feature-2.jpg'
 import back3 from '../../assets/pictures/amenity2/feature-3.jpg'
 import back4 from '../../assets/pictures/amenity2/feature-4.jpg'
 import Button from '../SingleItems/Button/Button'
+import { MediaQueryContext } from '../../Hooks/MediaQueryContext'
 
 const amenities = [
     {
@@ -39,17 +40,85 @@ const amenities = [
     }
 ]
 
-const parentDiv=css`
+const textDiv = css`
+width:fit-content;
+padding:30px;
+z-index:1;
+`
+
+const PictureText=({amenity,parentStyle})=>{
+
+    const medias = useContext(MediaQueryContext)
+
+    const pictureDiv = css`
+        height:${medias.DT?"350px":"350px"};
+        width:${medias.DT?"550px":"100%"};
+        background-image:url(${amenity.picture});
+        background-position:center;
+        background-repeat:no-repeat;
+        z-index:1;
+        background-size:cover;    
+`
+
+    return(
+        <div css={parentStyle}>
+            <div css={pictureDiv}>
+            </div>
+            <div css={textDiv}>
+                <p className='gold'>{amenity.smallTitle}</p>
+                <h1>{amenity.bigTitle}</h1>
+                <p>{amenity.description}</p>
+                <Button text='READ MORE' width='fit-content'/>
+            </div>
+        </div>
+    )
+}
+const TextPicture=({amenity,parentStyle})=>{
+    const medias = useContext(MediaQueryContext)
+
+    const pictureDiv = css`
+    height:${medias.DT?"350px":"350px"};
+    width:${medias.DT?"550px":"100%"};
+    background-image:url(${amenity.picture});
+    background-position:center;
+    background-repeat:no-repeat;
+    z-index:1;
+    background-size:cover;   
+`
+const style =css `
+    &::before{
+        width:${medias.DT?"90%":"100%"} !important;
+        left:0px !important;
+    }
+`
+    return(
+        <div css={[parentStyle,style]}>
+            <div css={textDiv}>
+                <p className='gold'>{amenity.smallTitle}</p>
+                <h1>{amenity.bigTitle}</h1>
+                <p>{amenity.description}</p>
+                <Button text='READ MORE' width='fit-content'/>
+            </div>
+            <div css={pictureDiv}>
+            </div>
+        </div>
+    )
+}
+
+function RoomAmenites2() {
+    const medias = useContext(MediaQueryContext)
+
+    const parentCss=css`
     margin-bottom:100px;
-    padding:90px 0px;
-    display:flex;
+    padding:${medias.DT?"90px 0px":"0px"};
+    display:${medias.DT?"flex":"block"};
     gap:50px;
     position:relative;
     & h1 {
         color:white;
         font-weight:500;
-        font-size:40px;
-        line-height:60px;
+        font-size:${medias.DT?"40px":"25px"};
+        line-height:${medias.DT?"60px":"30pxz"};
     }
     & p:not(.gold) {
         color:white;
@@ -69,85 +138,24 @@ const parentDiv=css`
         content:'';
         position: absolute;
         top:0px;
-        left:0px;
         height:100%;
-        width:90%;
+        width:${medias.DT?"90%":"100%"};
         background-color:#0e1317;
-        left:10%;
+        left:${medias.DT?"10%":"0%"};
+        z-index:${medias.DT?"unset":"-10"}
     }
 `
-const textDiv = css`
-width:400px;
-padding:30px;
-z-index:1;
-`
-
-const PictureText=({amenity})=>{
-    const pictureDiv = css`
-        height:350px;
-        width:550px;
-        background-image:url(${amenity.picture});
-        background-position:center;
-        background-repeat:no-repeat;
-        z-index:1;
-        background-size:cover;    
-`
-
-    return(
-        <div css={parentDiv}>
-            <div css={pictureDiv}>
-            </div>
-            <div css={textDiv}>
-                <p className='gold'>{amenity.smallTitle}</p>
-                <h1>{amenity.bigTitle}</h1>
-                <p>{amenity.description}</p>
-                <Button text='READ MORE' width='fit-content'/>
-            </div>
-        </div>
-    )
-}
-const TextPicture=({amenity})=>{
-    const pictureDiv = css`
-    height:350px;
-    width:550px;
-    background-image:url(${amenity.picture});
-    background-position:center;
-    background-repeat:no-repeat;
-    z-index:1;
-    background-size:cover;   
-`
-const style =css `
-    &::before{
-        width:90% !important;
-        left:0px !important;
-    }
-`
-    return(
-        <div css={[parentDiv,style]}>
-            <div css={textDiv}>
-                <p className='gold'>{amenity.smallTitle}</p>
-                <h1>{amenity.bigTitle}</h1>
-                <p>{amenity.description}</p>
-                <Button text='READ MORE' width='fit-content'/>
-            </div>
-            <div css={pictureDiv}>
-            </div>
-        </div>
-    )
-}
-
-function RoomAmenites2() {
   return (
     <div>
         {amenities.map(amenityObj=>{
             if(amenityObj.direction == "TP"){
                 return(
-                    <TextPicture amenity={amenityObj}/>
+                    <TextPicture amenity={amenityObj} parentStyle={parentCss}/>
                 )
                 }
             else{
                 return(
-                    <PictureText amenity={amenityObj}/>
+                    <PictureText amenity={amenityObj} parentStyle={parentCss}/>
                 )
             }
         })}

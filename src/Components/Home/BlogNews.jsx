@@ -1,12 +1,13 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { css, jsx } from '@emotion/react'
-import React from 'react'
+import React, { useContext } from 'react'
 import back2 from '../../assets/pictures/Blog/blog-1.jpg'
 import back3 from '../../assets/pictures/Blog/blog-2.jpg'
 import back1 from '../../assets/pictures/Blog/blog-3.jpg'
 import { Collapse } from '@mui/material'
 import Button from '../SingleItems/Button/Button'
+import { MediaQueryContext } from '../../Hooks/MediaQueryContext'
 
 const currDate = new Date().toLocaleDateString()
 
@@ -25,6 +26,8 @@ const parentDiv = css `
 
 
 const SingleItem =({itemDetails})=>{
+
+  const medias = useContext(MediaQueryContext)
   const [mouseIn,setMouseIn] = React.useState(false);
   const picDiv = css `
     height:193px;
@@ -58,9 +61,14 @@ const divText =css `
     height:60px;
   }
 `
+
+const parentDIv = css `
+  width:fit-content;
+  margin:${medias.DT?'0px':'30px 0px'};
+`
 console.log(mouseIn)
   return(
-    <div>
+    <div css={parentDIv}>
       <div css={picDiv} 
       className='pic-zoom-anim' 
       onMouseEnter={()=>setMouseIn(true)} 
@@ -92,14 +100,19 @@ console.log(mouseIn)
 }
 
 function BlogNews() {
+  const medias = useContext(MediaQueryContext)
   return (
-    <div style={{height:'400px'}}>
+    <div style={{height:'fit-content'}}>
         <div className='text-center tex3t-div' css={parentDiv}>
             <p className='gold'>Our Blog</p>
             <h2>Read Our Blog And News</h2>
         </div>
         <div>
-          <div className='flex-arn'>
+          <div style={
+            medias.DT?{display:'flex',justifyContent:'space-around'}:
+            medias.SM || medias.BP?{width:'fit-content',margin:'0px auto'}:
+            medias.TB ?{display:'grid',gridTemplateColumns:'1fr 1fr'}:{}
+            }>
               {data.map((item,index)=>{
                 return(
                   <SingleItem itemDetails={item} key={index}/>

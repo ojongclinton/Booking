@@ -160,15 +160,15 @@ function Home() {
         <div className='sectionSpaced'>
             <RoomAmenities />
         </div>
-       {/* <div className='sectionMidSpaced'>
+       <div className='sectionMidSpaced'>
             <RoomAmenites2 />
         </div>
-        <div className='sectionMidSpaced'>
+         <div className='sectionMidSpaced'>
             <BlogNews />
         </div>
         <div className='sectionSpaced'>
             <UserInfo />
-        </div> */}
+        </div>
     </div>
   )
 }

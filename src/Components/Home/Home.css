@@ -100,7 +100,6 @@ div.sectionNoSpace{
 }
 div.sectionMidSpaced{
     padding: 0px 120px;
-    display: none;
 }
 div.tex3t-div{
     padding: 20px 0px;
@@ -233,6 +232,11 @@ div.pic-zoom-anim:hover{
    768-480     - tablet 
    480-less    - phone landscape & smaller
 --------------------------------------------*/
+@media all and (max-width:1244px) and (min-width:786px){
+    .theDotClass{
+       bottom: 70px;
+    }
+}
 @media all and (max-width:1200px) and (min-width: 1024px){
     div.image-text-container svg{
         position: absolute;
@@ -285,9 +289,12 @@ div.pic-zoom-anim:hover{
     div.image-footer-single-grid-button{
         padding: auto;
     }
-    div.sectionSpaced{
+    div.sectionSpaced, div.sectionMidSpaced{
         padding: 30px;
         margin-top: 50px;
+    }
+    div.sectionMidSpaced{
+        margin-top: 0px;
     }
     div.tex3t-div{
         padding: 10px 0px;
@@ -312,6 +319,16 @@ div.pic-zoom-anim:hover{
     }
     div.videoContainerContent{
         padding: 100px;
+    }
+}
+@media all and (max-width:786px){
+    .theDotClass{
+        width: fit-content;
+        position:relative;
+        left: 0;
+        right:0;
+        margin:20px auto;
+        bottom:20px;
     }
 }
 

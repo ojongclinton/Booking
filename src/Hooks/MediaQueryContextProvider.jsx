@@ -10,7 +10,7 @@ function MediaQueryContextProvider({children}) {
 // BP = isBigPhone : 768-480 - tablet 
 // SM = isSmallPhone : 480-less - phone landscape & smaller
 
-  const DT = useMediaQuery({ minWidth: 1024               })
+  const DT = useMediaQuery({ minWidth: 1024})
   const TB = useMediaQuery({ minWidth: 768, maxWidth:1024 })
   const BP = useMediaQuery({ maxWidth: 768, minWidth:480  })
   const SM = useMediaQuery({ maxWidth: 480, minWidth:0    })
