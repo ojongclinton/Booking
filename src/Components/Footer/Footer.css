@@ -55,3 +55,14 @@ div.footerSecondSection a {
 div.footerSecondSection span{
     color: #b89146;
 }
+
+@media all and (max-width:811px){
+    div.footerSecondSection >div{
+        display: unset;
+    }
+    div.footerSecondSection a {
+        display: block;
+        padding: 10px 0px;
+        border: none;
+    }
+}
