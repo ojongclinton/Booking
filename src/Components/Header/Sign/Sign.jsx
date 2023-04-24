@@ -11,7 +11,7 @@ function Sign({text='Default'}) {
         cursor:'pointer',
     }
   return (
-    <div onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)} style={{...divStyle}} >
+    <div onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)} style={{...divStyle}} className='single-headerContainer-line'>
         <a style={{fontSize:'18px'}}>{text}
         {hover?<TbMinus size={13} style={{position:'relative',top:'2px',left:'5px'}} className='keyChange'/>:
         <HiPlusSm size={13} style={{position:'relative',top:'2px',left:'3px'}} className='keyChange'/>}

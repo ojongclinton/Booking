@@ -20,7 +20,6 @@ import { MediaQueryContext } from '../../Hooks/MediaQueryContext'
 function Home() {
   const locationData = useContext(LocationContext)
   const media = useContext(MediaQueryContext)
-  console.log(media)
   const[checkin,setCheckIn] = React.useState("mm/dd/yy")
   const[checkout,setCheckOut] = React.useState("mm/dd/yy")
   const[rooms,setRoom] = React.useState(2)

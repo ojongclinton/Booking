@@ -3,7 +3,6 @@
     color: white;
     position: absolute;
     width: 100%;
-
     border-bottom: 1px solid #373939;
     z-index: 20;
 }
@@ -20,6 +19,14 @@
     animation-name: slideinHead;
     animation-duration: .5s;
     animation-timing-function: ease-in-out;
+}
+div.mobile-drawer-container{
+    padding: 10px;
+    background-color: #0e1317;
+    color: white;
+}
+div.mobile-drawer-container .single-headerContainer-line{
+    padding: 20px 0px;
 }
 @keyframes slideinHead {
     from {

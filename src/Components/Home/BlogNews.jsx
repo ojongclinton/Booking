@@ -8,6 +8,7 @@ import back1 from '../../assets/pictures/Blog/blog-3.jpg'
 import { Collapse } from '@mui/material'
 import Button from '../SingleItems/Button/Button'
 import { MediaQueryContext } from '../../Hooks/MediaQueryContext'
+import { useMediaQuery } from 'react-responsive'
 
 const currDate = new Date().toLocaleDateString()
 
@@ -26,12 +27,12 @@ const parentDiv = css `
 
 
 const SingleItem =({itemDetails})=>{
-
+  const sBug = useMediaQuery({ minWidth: 1024, maxWidth:1316 });
   const medias = useContext(MediaQueryContext)
   const [mouseIn,setMouseIn] = React.useState(false);
   const picDiv = css `
     height:193px;
-    width:350px;
+    width:${medias.SM || sBug?"300px":medias.BP?"350px":medias.TB?"350px":medias.DT?"350px":"350px"};
     background-image:url(${itemDetails.picture});
     background-repeat:no-repeat;
     background-position:center;
@@ -66,7 +67,7 @@ const parentDIv = css `
   width:fit-content;
   margin:${medias.DT?'0px':'30px 0px'};
 `
-console.log(mouseIn)
+
   return(
     <div css={parentDIv}>
       <div css={picDiv} 
@@ -100,6 +101,7 @@ console.log(mouseIn)
 }
 
 function BlogNews() {
+  
   const medias = useContext(MediaQueryContext)
   return (
     <div style={{height:'fit-content'}}>

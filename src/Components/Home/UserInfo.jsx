@@ -10,19 +10,19 @@ const details = [
   {
     picture:back2,
     name:"William Clinton",
-    category:"react dev",
+    category:"Front End dev (Html , Css , Javascript)",
     details:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati delectus officiis veritatis commodi ex nisi, libero itaque rerum neque! Earum vel labore accusantium cumque corporis libero necessitatibus voluptatum sint, accusamus iusto laboriosam veniam omnis illo repellendus debitis, aspernatur officiis! Ex!",
   },
   {
     picture:back2,
     name:"William Clinton",
-    category:"react dev",
+    category:"React Dev",
     details:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati delectus officiis veritatis commodi ex nisi, libero itaque rerum neque! Earum vel labore accusantium cumque corporis libero necessitatibus voluptatum sint, accusamus iusto laboriosam veniam omnis illo repellendus debitis, aspernatur officiis! Ex!",
   },
   {
     picture:back2,
     name:"William Clinton",
-    category:"react dev",
+    category:"Spring Boot Dev",
     details:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati delectus officiis veritatis commodi ex nisi, libero itaque rerum neque! Earum vel labore accusantium cumque corporis libero necessitatibus voluptatum sint, accusamus iusto laboriosam veniam omnis illo repellendus debitis, aspernatur officiis! Ex!",
   }
 ]

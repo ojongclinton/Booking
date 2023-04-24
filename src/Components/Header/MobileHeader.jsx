@@ -6,6 +6,7 @@ import { Drawer } from '@mui/material'
 import {FiMenu} from 'react-icons/fi'
 import {MdOutlineCancel} from 'react-icons/md'
 import {GiMountaintop} from 'react-icons/gi'
+import Sign from './Sign/Sign'
 
 
 function MobileHeader({scroll}) {
@@ -14,10 +15,6 @@ function MobileHeader({scroll}) {
         setDrawer(prev => !prev)
     }
 
-const stickyStyle = css `
-    display:flex;
-    gap:70%;
-`
 
   return (
     <div className={scroll>200?'sticky-box flex-btw flex-cnt':'header-box flex-btw flex-cnt'}>
@@ -28,12 +25,18 @@ const stickyStyle = css `
       <div className='headerButtonContainer'>
         <FiMenu size={40} onClick={handleDrawer}/>
         <Drawer open={drawer} anchor='top'>
-                <div>
+                <div className='mobile-drawer-container'>
                     <div className='flex-btw'>
                         <p></p>
-                        <MdOutlineCancel size={40} onClick={handleDrawer} fill='#0e1317'/>
+                        <MdOutlineCancel size={40} onClick={handleDrawer} fill='#ffffff'/>
                     </div>
-                    <p>This is it</p>
+                    <div>
+                    <Sign text='Home'/>
+                    <Sign text='Pages'/>
+                    <Sign text='Room'/>
+                    <Sign text='Blog'/>
+                    <Sign text='Contact'/>
+                    </div>
                 </div>
         </Drawer>
       </div>
