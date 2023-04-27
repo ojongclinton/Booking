@@ -10,8 +10,6 @@ import Loading,{Error} from '../SingleItems/Loading/Loading'
 import { deepSearchReplace,deleteEmptyKeys } from '../SingleItems/Other/Functions'
 import { MediaQueryContext } from '../../Hooks/MediaQueryContext'
 
-
-
 const curerrentDate = new Date()
 const hotelTypeBody = {
   currency: "USD",
@@ -57,7 +55,7 @@ function LuxuryRooms() {
     const roomTypes = ['Popular','Luxory','Suites','Family','Single']
     const [fetchData,{data,status,error,isLoading,isError,isSuccess}] = useGetFilteredMutation()
     const [roomType,setRoomType] = useState(roomTypes[0])
-    const [allRooms,setRooms] = useState();
+    const [allRooms,setRooms] = useState([]);
 
 
     const typeStyle = css`
@@ -80,8 +78,13 @@ function LuxuryRooms() {
     }
 
     useEffect(()=>{
+      let isUnfetched = true;
+
       fetchData(hotelTypeBody)
-      setRooms(data)
+
+      return()=>{
+        isUnfetched = false;
+      }
     },[])
 
     useEffect(()=>{
@@ -89,39 +92,32 @@ function LuxuryRooms() {
 
       switch(roomType){
         case('Popular'):
-          let copy1 = {...hotelTypeBody,type:"Popular"}
-          copy1 = deleteEmptyKeys(copy1)
-          fetchData(copy1)
+        setRooms(prev=>{
+          return prev.slice(0,3)
+        })
           break;
 
         case('Luxory'):
-          let copy2 = {...hotelTypeBody,type:"luxory"}
-          copy2 = deepSearchReplace(copy2,'star',["40","50"])
-          copy2 = deleteEmptyKeys(copy2)
-          fetchData(copy2)
+        setRooms(prev=>{
+          return prev.slice(3,6)
+        })
           break;
 
         case('Suites'):
-          let copy3 = {...hotelTypeBody,type:"Suites"}
-          copy3 = deepSearchReplace(copy3,'bedroomFilter',["0"]);
-          copy3 = deleteEmptyKeys(copy3)
-          fetchData(copy3)
+        setRooms(prev=>{
+          return prev.slice(2,5)
+        })
           break;
 
         case('Family'):
-           let copy4 = {...hotelTypeBody,type:"family"}
-           copy4 = deepSearchReplace(copy4,'adults',3)
-           copy4.rooms[0].children = [{age:10},{age:10}]
-           copy4 = deepSearchReplace(copy4,'travelerType',["FAMILY"])
-           copy4 = deleteEmptyKeys(copy4)
-           fetchData(copy4)
-         
+        setRooms(prev=>{
+          return prev.slice(4,9)
+        })
          break;
         case('Single'):
-          let copy5 = {...hotelTypeBody,type:"single"}
-          copy5 =  deepSearchReplace(copy5,'adults',1)
-          copy5 = deleteEmptyKeys(copy5)
-          fetchData(copy5)
+        setRooms(prev=>{
+          return prev.slice(9,prev.length)
+        })
           break;
 
       }
@@ -139,12 +135,13 @@ function LuxuryRooms() {
       content = <Error/>
     } else if(isSuccess){
       console.log(data)
-      if(data && data!=null && data.data.propertySearch.properties.length > 0 ){
+      if(data && data!=null && data?.data?.propertySearch?.properties?.length > 0 ){
         const criteriaResults =  data.data.propertySearch.properties
+        setRooms(criteriaResults)
         content = 
         <div>
           <TransitionGroup className='theGroup'>
-        {criteriaResults.map((room,index)=>{
+        {allRooms.map((room,index)=>{
           return(
             <CSSTransition key={index} timeout={300} classNames="item">
               <LuxurySingleRoom room={room} />
