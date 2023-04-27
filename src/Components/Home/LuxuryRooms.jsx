@@ -134,8 +134,9 @@ function LuxuryRooms() {
     else if (isError){
       content = <Error/>
     } else if(isSuccess){
+      console.log(error)
       console.log(data)
-      if(data && data!=null && data?.data?.propertySearch?.properties?.length > 0 ){
+      if(data && data!=null && data?.data?.propertySearch?.properties.length > 0 ){
         const criteriaResults =  data.data.propertySearch.properties;
         setRooms(criteriaResults)
         content = 
@@ -152,7 +153,6 @@ function LuxuryRooms() {
 
         </div>
       }
-      else isError = true;
     }
 
   return (

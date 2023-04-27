@@ -10,16 +10,14 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
         getFiltered:builder.mutation({
             query:(body)=>{
                     const passedBody = {...body}
-                    delete passedBody["type"]
-                    console.log(body)
+                    console.log("currently here")
+                    console.log(passedBody)
                 return ({
                 url:'/properties/v2/list',
                 method:'POST',
                 body:passedBody
 
             })},
-            providesTags:(result,query,arg) =>[arg.type]
-
         }),
     })
 })
