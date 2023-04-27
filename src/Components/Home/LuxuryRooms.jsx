@@ -16,6 +16,9 @@ const hotelTypeBody = {
   eapid: 1,
   locale: "en_US",
   siteId: 300000001,
+  destination: {
+    regionId: "6054439"
+},
   checkInDate: {
     day: curerrentDate.getDate(),
     month: curerrentDate.getMonth() + 1,
@@ -49,6 +52,32 @@ const hotelTypeBody = {
       }
   }
 }
+const RenderRooms =({roomList,allRooms,setRooms,setglobalRooms,globalRooms})=>{
+  useEffect(()=>{
+    setglobalRooms(roomList)
+    setRooms(globalRooms.slice(0,4))
+  },[])
+
+  useEffect(()=>{
+    setRooms(globalRooms.slice(0,4))
+  },[globalRooms])
+
+  return(
+        <div>
+          <TransitionGroup className='theGroup'>
+        {allRooms.map((room,index)=>{
+          return(
+            <CSSTransition key={index} timeout={300} classNames="item">
+              <LuxurySingleRoom room={room} />
+            </CSSTransition>
+          )
+        })}
+        </TransitionGroup>
+
+        </div>
+  )
+  
+}
 
 function LuxuryRooms() {
     const media = useContext(MediaQueryContext)
@@ -56,6 +85,8 @@ function LuxuryRooms() {
     const [fetchData,{data,status,error,isLoading,isError,isSuccess}] = useGetFilteredMutation()
     const [roomType,setRoomType] = useState(roomTypes[0])
     const [allRooms,setRooms] = useState([]);
+    const [globalRooms,setglobalRooms] = useState([]);
+    
 
 
     const typeStyle = css`
@@ -92,33 +123,30 @@ function LuxuryRooms() {
 
       switch(roomType){
         case('Popular'):
-        setRooms(prev=>{
-          return prev.slice(0,3)
-        })
+        setRooms(globalRooms.slice(0,4))
           break;
 
         case('Luxory'):
-        setRooms(prev=>{
-          return prev.slice(3,6)
-        })
+        setRooms(globalRooms.slice(3,6))
           break;
 
         case('Suites'):
-        setRooms(prev=>{
-          return prev.slice(2,5)
-        })
+        setRooms(globalRooms.slice(2,5))
           break;
 
         case('Family'):
-        setRooms(prev=>{
-          return prev.slice(4,9)
-        })
+        setRooms(globalRooms.slice(4,9))
          break;
+
         case('Single'):
-        setRooms(prev=>{
-          return prev.slice(9,prev.length)
-        })
-          break;
+        setRooms(globalRooms.slice(9,globalRooms.length))
+        break;
+
+        default:
+        setRooms(globalRooms.slice(3,6));
+        break;
+        
+
 
       }
       return () => {
@@ -134,24 +162,16 @@ function LuxuryRooms() {
     else if (isError){
       content = <Error/>
     } else if(isSuccess){
-      console.log(error)
-      console.log(data)
-      if(data && data!=null && data?.data?.propertySearch?.properties.length > 0 ){
-        const criteriaResults =  data.data.propertySearch.properties;
-        setRooms(criteriaResults)
-        content = 
-        <div>
-          <TransitionGroup className='theGroup'>
-        {allRooms.map((room,index)=>{
-          return(
-            <CSSTransition key={index} timeout={300} classNames="item">
-              <LuxurySingleRoom room={room} />
-            </CSSTransition>
-          )
-        })}
-        </TransitionGroup>
 
-        </div>
+      if(data && data!=null && data?.data?.propertySearch?.properties.length > 0 ){
+        const criteriaResults =  data.data.propertySearch.properties;        
+        content = <RenderRooms 
+                        roomList={criteriaResults} 
+                        allRooms={allRooms} 
+                        setRooms={setRooms} 
+                        globalRooms={globalRooms} 
+                        setglobalRooms={setglobalRooms}/>
+
       }
     }
 
@@ -181,6 +201,9 @@ function LuxuryRooms() {
 
   </div>
   )
+  
 }
+
+
 
 export default LuxuryRooms
