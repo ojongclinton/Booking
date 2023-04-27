@@ -7,7 +7,7 @@ export const apiSlice = createApi({
     reducerPath : 'apiSlice',
     
     baseQuery : fetchBaseQuery({
-        baseUrl:'',
+        // baseUrl:'https://hotels4.p.rapidapi.com/',
         // , setting Rapid api keys and headers
         prepareHeaders:(headers)=>{
             headers.set('content-type','application/json')

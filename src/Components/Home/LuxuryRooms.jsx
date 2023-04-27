@@ -136,7 +136,7 @@ function LuxuryRooms() {
     } else if(isSuccess){
       console.log(data)
       if(data && data!=null && data?.data?.propertySearch?.properties?.length > 0 ){
-        const criteriaResults =  data.data.propertySearch.properties
+        const criteriaResults =  data.data.propertySearch.properties;
         setRooms(criteriaResults)
         content = 
         <div>
