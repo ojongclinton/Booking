@@ -14,43 +14,42 @@ import { MediaQueryContext } from '../../Hooks/MediaQueryContext'
 
 const curerrentDate = new Date()
 const hotelTypeBody = {
+  currency: "USD",
   eapid: 1,
   locale: "en_US",
   siteId: 300000001,
-  destination: {
-      regionId: "6054439"
-  },
   checkInDate: {
-      day: curerrentDate.getDate(),
-      month: curerrentDate.getMonth() + 1,
-      year: curerrentDate.getFullYear()
+    day: curerrentDate.getDate(),
+    month: curerrentDate.getMonth() + 1,
+    year: curerrentDate.getFullYear()
   },
   checkOutDate: {
-      day: curerrentDate.getDate() + 10,
-      month: curerrentDate.getMonth() + 1,
-      year: curerrentDate.getFullYear()
+    day: curerrentDate.getDate() + 2,
+    month: curerrentDate.getMonth() + 1,
+    year: curerrentDate.getFullYear()
   },
   rooms: [
       {
-          adults: 1,
-          children:[]
+          adults: 2,
+          children: [
+              {
+                  age: 5
+              },
+              {
+                  age: 7
+              }
+          ]
       }
   ],
   resultsStartingIndex: 0,
-  resultsSize: 5,
+  resultsSize: 200,
   sort: "PRICE_LOW_TO_HIGH",
   filters: {
       price: {
-          max: 5000,
-          min: 500
+          max: 150,
+          min: 100
       }
-  },
-  lodging:[],
-  amenities:[],
-  mealPlan:[],
-  travelerType:[],
-  bedroomFilter:[],
-  star:[]
+  }
 }
 
 function LuxuryRooms() {
@@ -58,6 +57,7 @@ function LuxuryRooms() {
     const roomTypes = ['Popular','Luxory','Suites','Family','Single']
     const [fetchData,{data,status,error,isLoading,isError,isSuccess}] = useGetFilteredMutation()
     const [roomType,setRoomType] = useState(roomTypes[0])
+    const [allRooms,setRooms] = useState();
 
 
     const typeStyle = css`
@@ -80,8 +80,13 @@ function LuxuryRooms() {
     }
 
     useEffect(()=>{
+      fetchData(hotelTypeBody)
+      setRooms(data)
+    },[])
+
+    useEffect(()=>{
       const abortSignal = new AbortController()
-      
+
       switch(roomType){
         case('Popular'):
           let copy1 = {...hotelTypeBody,type:"Popular"}
@@ -133,6 +138,7 @@ function LuxuryRooms() {
     else if (isError){
       content = <Error/>
     } else if(isSuccess){
+      console.log(data)
       if(data && data!=null && data.data.propertySearch.properties.length > 0 ){
         const criteriaResults =  data.data.propertySearch.properties
         content = 
