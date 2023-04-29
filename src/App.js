@@ -4,6 +4,7 @@ import Header from "./Components/Header/Header";
 import Home from "./Components/Home/Home";
 import './Components/globalStyles.css'
 import Test from "./Components/Test";
+import Amenity from "./Components/Amenity/Amenity";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Header />
         <Routes>
           <Route path="/" element={<Home/>}/>
+          <Route path="/Amenity/*" element={<Amenity/>}/>
           <Route path="/text" element={<Test/>}/>
         </Routes>
       <Footer/>

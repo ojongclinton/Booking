@@ -88,6 +88,10 @@ function LuxurySingleRoom({room}) {
     }
     `
 
+const formStyles = css`
+
+`
+
   return (
     <div css={parentDiv} onMouseEnter={()=>setMouseIn(true)} onMouseLeave={()=>setMouseIn(false)}>
 
@@ -98,9 +102,11 @@ function LuxurySingleRoom({room}) {
                             <div css={nameDiv}>{/*  Name section */}
                                 <h3>Small Suite</h3>
                             </div>
-                            <div css={bookingDiv} className='showMe'>{/*  Booking Now section */}
-                                <p><AiOutlineRightCircle/> BOOK NOW</p>
-                            </div>
+                            <form action="" method="POST" css={formStyles}>
+                                <div css={bookingDiv} className='showMe'>{/*  Booking Now section */}
+                                    <p><AiOutlineRightCircle/> BOOK NOW</p>
+                                </div>
+                            </form>
                 </Collapse>
     </div>
   )

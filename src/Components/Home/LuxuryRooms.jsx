@@ -7,7 +7,6 @@ import './Home.css'
 import { useGetFilteredMutation } from './LuxuryRoomSlice'
 import LuxurySingleRoom from '../SingleItems/LuxuryRoom/LuxurySingleRoom'
 import Loading,{Error} from '../SingleItems/Loading/Loading'
-import { deepSearchReplace,deleteEmptyKeys } from '../SingleItems/Other/Functions'
 import { MediaQueryContext } from '../../Hooks/MediaQueryContext'
 
 const curerrentDate = new Date()
@@ -173,6 +172,7 @@ function LuxuryRooms() {
                         setglobalRooms={setglobalRooms}/>
 
       }
+      else content = <Error/>
     }
 
   return (
