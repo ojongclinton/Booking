@@ -13,7 +13,8 @@ import {MdLocationCity} from 'react-icons/md'
 
 function SingleAmenityController() {
   const {id} = useParams();
-
+  const selectedData = amenData2.find(amend=>amend.data.propertyInfo.summary.id == id.toString())
+  console.log(selectedData)
   const requestBody = {
     currency: "USD",
     locale: "en_US",
@@ -79,8 +80,8 @@ if(isError){
   <div>
       <div css={picHeader}>
         <div css={picContent}>
-          <h1>{amenData2.data.propertyInfo.summary.name}</h1>
-          <Rating readOnly value={amenData2.data.propertyInfo.summary.overview.propertyRating.rating}/>
+          <h1>{selectedData.data.propertyInfo.summary.name}</h1>
+          <Rating readOnly value={selectedData.data.propertyInfo.summary.overview.propertyRating.rating}/>
         </div>
       </div>
       <div css={contentContainer}>
@@ -105,7 +106,7 @@ if(isError){
         <h1>Golden Star Hotel</h1>
       </div>
       <div>
-        <SingleAmenity amenityData={amenData2}/>
+        <SingleAmenity amenityData={selectedData}/>
       </div>
     </div>
 } else{
