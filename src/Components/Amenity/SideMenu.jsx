@@ -5,17 +5,17 @@ import { Select,MenuItem } from '@mui/material'
 import React, { useContext, useState } from 'react'
 import Button from '../SingleItems/Button/Button'
 import { MediaQueryContext } from '../../Hooks/MediaQueryContext'
+import { Link } from 'react-router-dom'
 
 let objectDate = new Date();
 
 function SideMenu({id,coordinates}) {
-console.log(coordinates)
 
 let dataObj = {
     currency: "USD",
     eapid: 1,
     locale: "en_US",
-    propertyId: "9209612",
+    propertyId: id,
     checkInDate: {
         day: objectDate.getDate(),
         month: objectDate.getMonth() + 1,
@@ -98,8 +98,6 @@ let dataObj = {
 
     dataObj.rooms[0].adults = value;
     dataObj.rooms[1].adults = value;
-
-    console.log(dataObj)
   }
 
   return (
@@ -133,9 +131,10 @@ let dataObj = {
           </Select>
           </div>
           <div style={{margin:"10px 0px"}}>
-          <a href='lol.com'>
-            <Button to='#0e1317' textFrom='white' text='Check availability' />
-          </a>
+            <Link to="./offers" state={dataObj}>
+              <Button to='#0e1317' textFrom='white' text='Check availability' />
+            </Link>
+
           </div>
           
     </div>

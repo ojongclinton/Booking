@@ -1,19 +1,16 @@
 import React,{useContext} from 'react'
 import { LocationContext } from '../Hooks/LocationContext'
+import { useLocation } from 'react-router-dom'
+
 
 function Test() {
-    const location = useContext(LocationContext)
-    const changeDestination = location[1]
-    const handleClick = ()=>{
-        changeDestination('THis is the updated data ')
-        console.log(location[0])
-    }
+    const location = useLocation()
+    const data = location.state
+    console.log(data.propertyId)
+
   return (
     <div style={{paddingTop:'400px'}}>
-        <p>THe value gotten is in the console</p>
-        <button onClick={handleClick}>
-            change
-        </button>
+      
     </div>
   )
 }
