@@ -111,7 +111,7 @@ function PropertyAmenity({amen}) {
       {amen.contents.filter((amen=>amen.items[0].text.length < 100)).map((single,index)=>{
         const subIcon = iconFinder(single.items[0].text.toLowerCase())
         return(
-          <Grid item css={titleStyles} xl={4} lg={4} md={6} sm={6} xs={12}>
+          <Grid item css={titleStyles} xl={4} lg={4} md={6} sm={6} xs={12} key={index}>
             <p>{subIcon}</p>
             <p style={{marginTop:'-3px'}}>{single.items[0].text}</p>
           </Grid>

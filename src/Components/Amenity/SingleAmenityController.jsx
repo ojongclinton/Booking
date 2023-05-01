@@ -80,20 +80,19 @@ if(isError){
   <div>
       <div css={picHeader}>
         <div css={picContent}>
-          <h1>{selectedData.data.propertyInfo.summary.name}</h1>
-          <Rating readOnly value={selectedData.data.propertyInfo.summary.overview.propertyRating.rating}/>
         </div>
       </div>
       <div css={contentContainer}>
-      <SingleAmenity amenityData={data}/>
-        {/* <Error /> */}
+        <Error />
       </div>
   </div>
 } else if (isLoading){
   content = 
   <div>
       <div css={picHeader}>
+      <div css={picContent}>
         <h1>...</h1>
+        </div>
       </div>
       <div css={contentContainer}>
         <Loading />
@@ -101,24 +100,28 @@ if(isError){
   </div>
 }else if(isSuccess && data!=null && data?.data?.propertyInfo != null){
   content = 
-    <div>
-      <div css={picHeader}>
-        <h1>Golden Star Hotel</h1>
-      </div>
-      <div>
-        <SingleAmenity amenityData={selectedData}/>
-      </div>
+  <div>
+  <div css={picHeader}>
+    <div css={picContent}>
+      <h1>{data.data.propertyInfo.summary.name}</h1>
+      <Rating readOnly value={data.data.propertyInfo.summary.overview.propertyRating.rating}/>
     </div>
+  </div>
+  <div css={contentContainer}>
+  <SingleAmenity selectedData={data}/>
+  </div>
+</div>
 } else{
   content = 
   <div>
-      <div css={picHeader}>
-        
-      </div>
-      <div css={contentContainer}>
-        <Error />
-      </div>
+  <div css={picHeader}>
+    <div css={picContent}>
+    </div>
   </div>
+  <div css={contentContainer}>
+    <Error />
+  </div>
+</div>
 }
 
   return (

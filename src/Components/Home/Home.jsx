@@ -121,10 +121,6 @@ function Home() {
               <div className='tex3t-div'>
                 <p className='small gold'>Accomodations</p>
                 {/* <p className='small gold'>Accomodations</p> */}
-                <a href="http://localhost:3000" target='_blank'>Click me</a>
-                <form action="" method="post" target='_blank'>
-                  <button className='lux-amenity-link'>Submit</button>
-                </form>
                 <h2>Welcome Our Hotels And Resorts</h2>
                 <p>Savvy travelers are looking for more than just the next destination on the map. They are looking for a memorable experience and to make new friends along the way.</p>
                 <Button text='CHECK NOW' width='fit-content' to='#0e1317' textFrom='white'/>

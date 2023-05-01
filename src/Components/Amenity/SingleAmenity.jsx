@@ -3,8 +3,6 @@
 import { jsx,css } from '@emotion/react'
 import {Grid} from '@mui/material'
 import React from 'react'
-import { amenData2 } from './amenData2'
-import { useParams } from 'react-router-dom'
 import { generateRandom } from '../SingleItems/Other/Functions'
 import PropertyAmenity from './PropertyAmenity'
 import { DisplayImages } from './DisplayImages'
@@ -31,10 +29,7 @@ color:#0E1317;
     }
 `
 
-function SingleAmenity({amenityData}) {
-const {id} = useParams()
-
-    const selectedData = amenData2.find(amend=>amend.data.propertyInfo.summary.id == id.toString())
+function SingleAmenity({selectedData}) {
   return (
     <div>
         <Grid container spacing={2}>

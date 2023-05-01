@@ -3,7 +3,7 @@
 import { jsx,css } from '@emotion/react'
 import React from 'react'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Accordion,AccordionSummary,AccordionActions, AccordionDetails } from '@mui/material'
+import { Accordion,AccordionSummary,AccordionDetails } from '@mui/material'
 
 const accStyle = css `
     margin:3px 0px;
@@ -21,7 +21,9 @@ const accStyle = css `
 
 
 function MoreInfo({shldMention=[],pets=[],childBeds=[],others=[]}) {
+
 let longAmenities = [];
+
 others.forEach(other=>{
     other.contents.forEach(item=>{
         item.items.forEach(single=>{
@@ -42,9 +44,9 @@ others.forEach(other=>{
                         <h2>Child and Beds</h2>
                 </AccordionSummary>
                 <AccordionDetails>
-                    {childBeds.body.map((bod,index)=>{
+                    {childBeds?.body?.map((bod,index)=>{
                         return (
-                            <p>{bod}</p>
+                            <p key={index}>{bod}</p>
                         )
                     })}
                 </AccordionDetails>
@@ -58,9 +60,9 @@ others.forEach(other=>{
                         <h2>Pets</h2>
                 </AccordionSummary>
                 <AccordionDetails>
-                    {pets.body.map((bod,index)=>{
+                    {pets?.body?.map((bod,index)=>{
                         return(
-                            <p>{bod}</p>
+                            <p key={index}>{bod}</p>
                         )
                     })}
                 </AccordionDetails>
@@ -74,9 +76,9 @@ others.forEach(other=>{
                     <h2>We should mention !</h2>
                 </AccordionSummary>
                 <AccordionDetails>
-                    {shldMention.body.map((bod,index)=>{
+                    {shldMention?.body?.map((bod,index)=>{
                         return(
-                            <p>{bod}</p>
+                            <p key={index}>{bod}</p>
                         )
                     })}
                 </AccordionDetails>

@@ -102,11 +102,11 @@ const formStyles = css`
                             <div css={nameDiv}>{/*  Name section */}
                                 <h3>Small Suite</h3>
                             </div>
-                            <form action="" method="POST" css={formStyles}>
-                                <div css={bookingDiv} className='showMe'>{/*  Booking Now section */}
-                                    <p><AiOutlineRightCircle/> BOOK NOW</p>
-                                </div>
-                            </form>
+                                <a href={`/Amenity/property/${room.id}`}>
+                                    <div css={bookingDiv} className='showMe'>{/*  Booking Now section */}
+                                        <p><AiOutlineRightCircle/> BOOK NOW</p>
+                                    </div>
+                                </a>
                 </Collapse>
     </div>
   )
