@@ -2,7 +2,9 @@
 /** @jsx jsx */
 import { jsx,css } from '@emotion/react'
 import {Grid} from '@mui/material'
-import React from 'react'
+import React,{useContext} from 'react'
+import { amenData2 } from './amenData2'
+import { useParams } from 'react-router-dom'
 import { generateRandom } from '../SingleItems/Other/Functions'
 import PropertyAmenity from './PropertyAmenity'
 import { DisplayImages } from './DisplayImages'
@@ -11,14 +13,22 @@ import SideMenu from './SideMenu'
 import {ImEarth} from 'react-icons/im'
 import {GrMapLocation} from 'react-icons/gr'
 import {BiCurrentLocation} from 'react-icons/bi'
+import { MediaQueryContext } from '../../Hooks/MediaQueryContext'
 
 const countryData = require('country-data');
+
+function SingleAmenity({selectedData}) {
+
+const medias = useContext(MediaQueryContext)
+const {id} = useParams()
 
 const InfoContainer = css `
 width:90%;
 color:#0E1317;
+margin:${medias.DT || medias.TB?"unset":"auto"};
     & h1.tag{
-        font-size:30px;
+        font-size:${medias.DT || medias.TB?"30px":"25px"};
+        text-align:${medias.DT || medias.TB?"unset":"center"};
         font-weight:500;
         margin-bottom:30px;
     }
@@ -28,14 +38,16 @@ color:#0E1317;
         font-size:16px
     }
 `
-
-function SingleAmenity({selectedData}) {
+    // const selectedData = amenData2.find(amend=>amend.data.propertyInfo.summary.id == id.toString())
   return (
     <div>
         <Grid container spacing={2}>
             <Grid item lg={3} xl={3} md={3} sm={12} xs={12}>
-            <div>
-                <SideMenu />
+            <div style={{position:"sticky",top:140}}>
+                <SideMenu 
+                    id={selectedData?.data?.propertyInfo?.summary.id}
+                    coordinates = {selectedData?.data?.propertyInfo?.summary.location.coordinates}
+                    />
             </div>
             </Grid>
             <Grid item lg={9} xl={9} md={9} sm={12} xs={12}>
@@ -85,13 +97,14 @@ function SingleAmenity({selectedData}) {
                         )
                     })}
                 </div>
-            </div>
-            <MoreInfo 
+                <MoreInfo 
                 childBeds = {selectedData.data.propertyInfo.summary.policies.childAndBed}
                 pets = {selectedData.data.propertyInfo.summary.policies.pets}
                 shldMention = {selectedData.data.propertyInfo.summary.policies.shouldMention}
                 others = {selectedData.data.propertyInfo.summary.amenities.amenities}
             />
+            </div>
+            
             </Grid>
         </Grid>
     </div>

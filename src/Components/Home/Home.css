@@ -228,6 +228,18 @@ button.lux-amenity-link{
     background-color: transparent;
     color: black;
 }
+
+div.sticky-side-bar-selection input,
+div.sticky-side-bar-selection input[type="date"],
+div.sticky-side-bar-selection select
+{
+    border: 1px solid #c4c4c4;
+    padding: 12px;
+    width: 90%;
+    border-radius: 5px;
+    color: black;
+}
+
 /*------------------------------------------
   Responsive Grid Media Queries - 1280, 1024, 768, 480
    1280-1024   - desktop (default grid)

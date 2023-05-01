@@ -1,13 +1,20 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx,css } from '@emotion/react'
-import React from 'react'
+import React,{useContext} from 'react'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Accordion,AccordionSummary,AccordionDetails } from '@mui/material'
+import { MediaQueryContext } from '../../Hooks/MediaQueryContext';
 
+
+function MoreInfo({shldMention=[],pets=[],childBeds=[],others=[]}) {
+
+const medias = useContext(MediaQueryContext)
 const accStyle = css `
     margin:3px 0px;
-
+    background-color:#f7f7f7;
+    box-shadow:none;
+    width:100%;
     & h2{
         font-size:20px;
         line-height:20px;
@@ -19,8 +26,6 @@ const accStyle = css `
      }
 `
 
-
-function MoreInfo({shldMention=[],pets=[],childBeds=[],others=[]}) {
 
 let longAmenities = [];
 
@@ -37,7 +42,7 @@ others.forEach(other=>{
   return (
 <div>
         <div>
-            <Accordion style={{backgroundColor:"#f7f7f7",borderRadius:"0px",boxShadow:"none",width:"90%"}} css={accStyle}>
+            <Accordion css={accStyle}>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />} 
                     aria-controls="panel1a-content"
                     id="panel1a-header">
@@ -53,7 +58,7 @@ others.forEach(other=>{
             </Accordion>
         </div>
         <div>
-            <Accordion style={{backgroundColor:"#f7f7f7",borderRadius:"0px",boxShadow:"none",width:"90%"}} css={accStyle}>
+            <Accordion css={accStyle}>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header">
@@ -69,7 +74,7 @@ others.forEach(other=>{
             </Accordion>
         </div>
         <div>
-            <Accordion style={{backgroundColor:"#f7f7f7",borderRadius:"0px",boxShadow:"none",width:"90%"}} css={accStyle}>
+            <Accordion css={accStyle}>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header">
@@ -85,7 +90,7 @@ others.forEach(other=>{
             </Accordion>
         </div>
         <div>
-        <Accordion style={{backgroundColor:"#f7f7f7",borderRadius:"0px",boxShadow:"none",width:"90%"}} css={accStyle}>
+        <Accordion css={accStyle}>
                 <AccordionSummary expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     id="panel1a-header">

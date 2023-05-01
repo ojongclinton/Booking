@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx,css } from '@emotion/react'
-import React, { useEffect } from 'react'
+import React, { useEffect,useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import { useGetSingleAmenityMutation } from './SingleAmenitySlice';
 import Loading, { Error } from '../SingleItems/Loading/Loading';
@@ -10,11 +10,13 @@ import bacPick from '../../assets/pictures/page-banner-6.jpg'
 import { Rating } from '@mui/material';
 import { amenData2 } from './amenData2';
 import {MdLocationCity} from 'react-icons/md'
+import { MediaQueryContext } from '../../Hooks/MediaQueryContext';
+
 
 function SingleAmenityController() {
+  const medias = useContext(MediaQueryContext)
   const {id} = useParams();
   const selectedData = amenData2.find(amend=>amend.data.propertyInfo.summary.id == id.toString())
-  console.log(selectedData)
   const requestBody = {
     currency: "USD",
     locale: "en_US",
@@ -72,20 +74,31 @@ gap:10px;
 `
 
 const contentContainer = css `
-  margin: 100px 20px;
+  margin:${medias.DT || medias.TB? "100px 50px": "10px"};
 `
 
 if(isError){
   content = 
+  // <div>
+  //     <div css={picHeader}>
+  //       <div css={picContent}>
+  //       </div>
+  //     </div>
+  //     <div css={contentContainer}>
+  //       <Error />
+  //     </div>
+  // </div>
   <div>
-      <div css={picHeader}>
-        <div css={picContent}>
-        </div>
-      </div>
-      <div css={contentContainer}>
-        <Error />
-      </div>
+  <div css={picHeader}>
+    <div css={picContent}>
+      <h1>{selectedData.data.propertyInfo.summary.name}</h1>
+      <Rating readOnly value={selectedData.data.propertyInfo.summary.overview.propertyRating.rating}/>
+    </div>
   </div>
+  <div css={contentContainer}>
+  <SingleAmenity selectedData={selectedData}/>
+  </div>
+</div>
 } else if (isLoading){
   content = 
   <div>

@@ -1,12 +1,13 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx,css } from '@emotion/react'
+import { Grid } from '@mui/material';
+import { useContext } from 'react';
+import { MediaQueryContext } from '../../Hooks/MediaQueryContext';
 
 export const DisplayImages =({imgList})=>{
-
+const medias = useContext(MediaQueryContext)
     const parentStyle = css `
-        display:grid;
-        grid-template-columns:1fr 1fr;
         margin-bottom:25px;
 
     `
@@ -22,24 +23,25 @@ export const DisplayImages =({imgList})=>{
     // }
 
     return (
-        <div css={parentStyle}>
+        <Grid container spacing={2}>
             {selectedImgs.map(img=>{
                     const image = imgList[img].image.url.split('?')[0];
                 const picStyle = css `
                     background-image:url(${image});
-                    width:403px;
+                    width:100%;
                     height:300px;
                     margin:10px 0px;
                     background-position:center;
                     background-size:cover;
-                    
                 `
                 return (
-                    <div css={picStyle}>
+                    <Grid item xl={6} lg={6} md={12} sm={12} xs={12} >
+                        <div css={picStyle}>
 
-                    </div>
+                        </div>
+                    </Grid>
                 )
             })}
-        </div>
+        </Grid>
     )
 }
