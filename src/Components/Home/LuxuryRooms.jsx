@@ -186,8 +186,8 @@ function LuxuryRooms() {
         </div>
         <div css={typeStyle}>
           {
-          roomTypes.map(room=>(
-          <div key={room} onClick={handleRoomChange} className={room===roomType?'luxury-room-type type-active':'luxury-room-type'}>
+          roomTypes.map((room,index)=>(
+          <div key={index} onClick={handleRoomChange} className={room===roomType?'luxury-room-type type-active':'luxury-room-type'}>
             <p>{room}</p>
             <div></div>
           </div>

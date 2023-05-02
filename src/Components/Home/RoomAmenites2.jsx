@@ -147,15 +147,15 @@ function RoomAmenites2() {
 `
   return (
     <div>
-        {amenities.map(amenityObj=>{
+        {amenities.map((amenityObj,index)=>{
             if(amenityObj.direction == "TP"){
                 return(
-                    <TextPicture amenity={amenityObj} parentStyle={parentCss}/>
+                    <TextPicture amenity={amenityObj} parentStyle={parentCss} key={index}/>
                 )
                 }
             else{
                 return(
-                    <PictureText amenity={amenityObj} parentStyle={parentCss}/>
+                    <PictureText amenity={amenityObj} parentStyle={parentCss} key={index}/>
                 )
             }
         })}

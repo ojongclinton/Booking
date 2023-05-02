@@ -93,7 +93,7 @@ margin:${medias.DT || medias.TB?"unset":"auto"};
                 <div style={{margin:"10px 0px",borderTop:'1px solid #E7E7E8',padding:'10px 0px'}}>
                     {selectedData.data.propertyInfo.summary.amenities.amenities.map((amen,index)=>{
                         return(
-                            <PropertyAmenity amen={amen}/>
+                            <PropertyAmenity amen={amen} key={index}/>
                         )
                     })}
                 </div>

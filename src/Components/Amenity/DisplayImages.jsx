@@ -24,7 +24,7 @@ const medias = useContext(MediaQueryContext)
 
     return (
         <Grid container spacing={2}>
-            {selectedImgs.map(img=>{
+            {selectedImgs.map((img,index)=>{
                     const image = imgList[img].image.url.split('?')[0];
                 const picStyle = css `
                     background-image:url(${image});
@@ -35,7 +35,7 @@ const medias = useContext(MediaQueryContext)
                     background-size:cover;
                 `
                 return (
-                    <Grid item xl={6} lg={6} md={12} sm={12} xs={12} >
+                    <Grid item xl={6} lg={6} md={12} sm={12} xs={12} key={index}>
                         <div css={picStyle}>
 
                         </div>

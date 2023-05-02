@@ -67,7 +67,7 @@ const contentStyle =css `
 
                                 {offerData.roomAmenities.bodySubSections[0].contents.map((content,index)=>{
                                     return(
-                                        <Grid item xl={5} lg={5} md={5} sm={12} xs={12}>
+                                        <Grid item xl={5} lg={5} md={5} sm={12} xs={12} key={index}>
                                             <div style={{display:"flex",gap:"5px",margin:"0px 0px"}}>
                                              <p><AiOutlineCheckSquare color='#b89146' size={20}/></p>
                                              <p> {content.header.text} : {content.items[0].content.text.replace( /(<([^>]+)>)/ig, "- ")} </p>
@@ -108,7 +108,7 @@ const contentStyle =css `
                                             margin:auto;
                                         `
                                         return(
-                                            <Grid item xl={4} lg={4} md={6} sm={6} xs={12}>
+                                            <Grid item xl={4} lg={4} md={6} sm={6} xs={12} key={index}>
                                                 <div css={morePicStyle}>
 
                                                 </div>

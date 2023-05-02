@@ -141,7 +141,7 @@ const detailTextDiv = css `
             margin:${medias.SM || medias.BP?"auto":"unset"};
           `
           return(
-            <div >
+            <div key={index}>
               <div css={detailDivContainer}>
                 
               <div css ={detailPicDiv}>{/*Picture Here*/}

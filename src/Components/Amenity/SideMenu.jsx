@@ -11,7 +11,7 @@ let objectDate = new Date();
 
 function SideMenu({id,coordinates}) {
 
-let dataObj = {
+let initial = {
     currency: "USD",
     eapid: 1,
     locale: "en_US",
@@ -35,9 +35,7 @@ let dataObj = {
     rooms: [
         {
             adults: 1,
-            children: [
-                
-            ]
+            children: []
         },
         {
             adults: 1,
@@ -45,6 +43,8 @@ let dataObj = {
         }
     ]
 }
+
+const [dataObj,setDataObgj] = useState(initial)
 
   const medias = useContext(MediaQueryContext)
 
@@ -66,9 +66,16 @@ let dataObj = {
     setChkin(value)
 
     let chkInvalue = new Date(e.target.value)
-    dataObj.checkInDate.day = chkInvalue.getDate()
-    dataObj.checkInDate.month = chkInvalue.getMonth() + 1
-    dataObj.checkInDate.year = chkInvalue.getFullYear()
+    setDataObgj(prev=>({
+      ...prev, ...prev.checkInDate.day= chkInvalue.getDate()
+    }))
+    setDataObgj(prev=>({
+      ...prev,...prev.checkInDate.month = chkInvalue.getMonth() + 1
+    }))
+    setDataObgj(prev=>({
+      ...prev,...prev.checkInDate.year = chkInvalue.getFullYear()
+    }))
+
   }
   const handleCheckOut =(e)=>{
     let value = e.target.value;
@@ -76,9 +83,16 @@ let dataObj = {
 
     setChkOut(value)
     let chkOutvalue = new Date(e.target.value)
-    dataObj.checkOutDate.day = chkOutvalue.getDate()
-    dataObj.checkOutDate.month = chkOutvalue.getMonth() + 1
-    dataObj.checkOutDate.year = chkOutvalue.getFullYear()
+
+    setDataObgj(prev=>({
+      ...prev,...prev.checkOutDate.day = chkOutvalue.getDate()
+    }))
+    setDataObgj(prev=>({
+      ...prev,...prev.checkOutDate.month = chkOutvalue.getMonth() + 1
+    }))
+    setDataObgj(prev=>({
+      ...prev,...prev.checkOutDate.year = chkOutvalue.getFullYear()
+    }))
   }
   const handleChil = (e)=>{
     let value = e.target.value;
@@ -88,16 +102,16 @@ let dataObj = {
       age:8
     }
 
-    for(let i =0;i<=value-1;i++){
-      dataObj.rooms[0].children.push(childObj)
+    for(let i = 0 ; i <= value-1 ; i++){
+      setDataObgj(prev=>({...prev,...prev.rooms[0].children.push(childObj)}))
     }
   }
   const handleAdlt = (e)=>{
     let value = e.target.value;
     setAdults(value)
+    setDataObgj(prev=>({...prev,...prev.rooms[0].adults = value}))
+    setDataObgj(prev=>({...prev,...prev.rooms[1].adults = value}))
 
-    dataObj.rooms[0].adults = value;
-    dataObj.rooms[1].adults = value;
   }
 
   return (
@@ -105,15 +119,15 @@ let dataObj = {
       <h2 style={{marginBottom:"10px",padding:"5px",borderBottom:"1px solid #b89146"}}>Book Now</h2>
             <div>
               <p>Check-in date</p>
-              <input type="date" value={checkIn} onChange={handleCheckin}/>
+              <input required type="date" value={checkIn} onChange={handleCheckin}/>
             </div>
             <div>
               <p>Check-out date</p>
-              <input type="date" value={checkOut} onChange={handleCheckOut}/>
+              <input required type="date" value={checkOut} onChange={handleCheckOut}/>
             </div>
           <div>
             <p>Number of adults</p>
-          <Select value={adlts} onChange={handleAdlt} fullWidth disableUnderline style={{fontWeight:700,fontSize:'14px'}}>
+          <Select required value={adlts} onChange={handleAdlt} fullWidth style={{fontWeight:700,fontSize:'14px'}}>
                     <MenuItem value={1}>1</MenuItem>
                     <MenuItem value={2}>2</MenuItem>
                     <MenuItem value={3}>3</MenuItem>
@@ -122,7 +136,7 @@ let dataObj = {
           </div>
           <div>
             <p>Number of children(Below 10)</p>
-          <Select value={chldr} onChange={handleChil} fullWidth  disableUnderline style={{fontWeight:700,fontSize:'14px'}}>
+          <Select required value={chldr} onChange={handleChil} fullWidth style={{fontWeight:700,fontSize:'14px'}}>
                     <MenuItem value={0}>0</MenuItem>
                     <MenuItem value={1}>1</MenuItem>
                     <MenuItem value={2}>2</MenuItem>

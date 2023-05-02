@@ -54,6 +54,7 @@ function PropertyOffers() {
 `
     const location = useLocation()
     const dataObject = location.state
+    console.log(dataObject)
 
     const [getOffers,{data,isLoading,isError,isSuccess}] = useGetPropertyOffersMutation()
 
