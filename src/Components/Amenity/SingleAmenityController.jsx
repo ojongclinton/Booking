@@ -79,26 +79,15 @@ const contentContainer = css `
 
 if(isError){
   content = 
-  // <div>
-  //     <div css={picHeader}>
-  //       <div css={picContent}>
-  //       </div>
-  //     </div>
-  //     <div css={contentContainer}>
-  //       <Error />
-  //     </div>
-  // </div>
   <div>
-  <div css={picHeader}>
-    <div css={picContent}>
-      <h1>{selectedData.data.propertyInfo.summary.name}</h1>
-      <Rating readOnly value={selectedData.data.propertyInfo.summary.overview.propertyRating.rating}/>
-    </div>
+      <div css={picHeader}>
+        <div css={picContent}>
+        </div>
+      </div>
+      <div css={contentContainer}>
+        <Error />
+      </div>
   </div>
-  <div css={contentContainer}>
-  <SingleAmenity selectedData={selectedData}/>
-  </div>
-</div>
 } else if (isLoading){
   content = 
   <div>

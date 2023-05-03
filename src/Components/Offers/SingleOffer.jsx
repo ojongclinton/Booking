@@ -72,7 +72,6 @@ const contentStyle =css `
                                              <p><AiOutlineCheckSquare color='#b89146' size={20}/></p>
                                              <p> {content.header.text} : {content.items[0].content.text.replace( /(<([^>]+)>)/ig, "- ")} </p>
                                             </div>
-                                            {/* <div dangerouslySetInnerHTML={{__html:content.items[0].content.text}}></div> */}
                                         </Grid>
                                         )
                                     })}

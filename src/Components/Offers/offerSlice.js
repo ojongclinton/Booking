@@ -9,7 +9,7 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
                 console.log("Logging the body of property offers mutation !")
                 console.log(body)
                 return ({
-                url:'properties/v2/get-offers',
+                url:'/properties/v2/get-offers',
                 method:'POST',
                 body:body
             })},

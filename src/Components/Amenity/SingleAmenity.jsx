@@ -52,7 +52,7 @@ margin:${medias.DT || medias.TB?"unset":"auto"};
             </Grid>
             <Grid item lg={9} xl={9} md={9} sm={12} xs={12}>
             <div css={InfoContainer}>
-                <h1 className='tag'>{selectedData.data.propertyInfo.summary.tagline}</h1>
+                <h1 className='tag'>{selectedData?.data?.propertyInfo?.summary.tagline}</h1>
                 <Grid container spacing={3} style={{marginBottom:'15px'}}>
                     <Grid item >
                     <div style={{display:"flex",gap:"10px"}}>{/*Location details section*/}

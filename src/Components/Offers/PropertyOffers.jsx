@@ -5,9 +5,10 @@ import React, { useEffect,useContext } from 'react'
 import { useGetPropertyOffersMutation } from './offerSlice'
 import { useLocation } from 'react-router-dom'
 import bacPick from '../../assets/pictures/page-banner-6.jpg'
-import Loading, { Error } from '../SingleItems/Loading/Loading'
+import Loading, { Error, NoData } from '../SingleItems/Loading/Loading'
 import { MediaQueryContext } from '../../Hooks/MediaQueryContext'
 import RoomOffers from './RoomOffers'
+// import { offersData } from './offMock'
 
 const picHeader = css`
   background-image:url(${bacPick});
@@ -54,9 +55,10 @@ function PropertyOffers() {
 `
     const location = useLocation()
     const dataObject = location.state
+    console.log("logging the data object")
     console.log(dataObject)
 
-    const [getOffers,{data,isLoading,isError,isSuccess}] = useGetPropertyOffersMutation()
+    const [getOffers,{data,isLoading,isError,isSuccess,error}] = useGetPropertyOffersMutation()
 
     useEffect(()=>{
         const signal = new AbortController()
@@ -68,6 +70,9 @@ function PropertyOffers() {
     },[])
 
 let content;
+
+console.log(data)
+console.log(error)
 
 if (isLoading){
     content = 
@@ -82,18 +87,9 @@ if (isLoading){
     </div>
 </div>
 } else if(isError){
+
     content =  
-    <div>
-    <div css={picHeader}>
-        <div css={picContent}>
-            <h1>Hotel Offers</h1>
-        </div>
-    </div>
-    <div css={contentContainer}>
-    <RoomOffers offers = {data}/>
-    </div>
-</div>
-{/* <div>
+ <div>
     <div css={picHeader}>
         <div css={picContent}>
             <h1></h1>
@@ -102,11 +98,60 @@ if (isLoading){
     <div css={contentContainer}>
         <Error />
     </div>
-</div> */}
-} else if(isSuccess && data!=null && data?.data?.units.length > 0){
-    content = <RoomOffers offers = {data}/>
+</div> 
+// && data!=null && data?.data?.units?.length > 0
+} else if(isSuccess && data!=null && data?.data?.propertyOffers?.units != null){
+    if(data?.data?.propertyOffers?.units.length == 0){
+        content = 
+        <div>
+            <div css={picHeader}>
+                <div css={picContent}>
+                    <h1>Hotel Room Offers</h1>
+                </div>
+            </div>
+            <div css={contentContainer}>
+                <NoData text={"Room offers"}/>
+            </div>
+        </div>
+    }
+    else{
+            content = 
+<div>
+    <div css={picHeader}>
+        <div css={picContent}>
+            <h1>Hotel Room Offers</h1>
+        </div>
+    </div>
+    <div css={contentContainer}>
+        <RoomOffers offers = {data}/>
+    </div>
+</div>
+    }
+// console.log(data)
+// console.log(error)
+//     content = 
+// <div>
+//     <div css={picHeader}>
+//         <div css={picContent}>
+//             <h1>Hotel Room Offers</h1>
+//         </div>
+//     </div>
+//     <div css={contentContainer}>
+//         <RoomOffers offers = {data}/>
+//     </div>
+// </div>
 }else{
-
+    content =  
+ <div>
+    <div css={picHeader}>
+        <div css={picContent}>
+            <h1></h1>
+        </div>
+    </div>
+    <div css={contentContainer}>
+        <Error />
+    </div>
+</div>
 }
 
   return (

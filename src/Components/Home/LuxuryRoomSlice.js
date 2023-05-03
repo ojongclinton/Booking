@@ -1,8 +1,5 @@
 import { apiSlice } from "../../store/api/apiSlice";
 
-const consoleData=(data)=>{
-    console.log(data)
-}
 
 export const extendedApiSlice = apiSlice.injectEndpoints({
     endpoints:builder=>({

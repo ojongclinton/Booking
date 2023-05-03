@@ -6,10 +6,10 @@ import React from 'react'
 import { offersData } from './offMock'
 import SingleOffer from './SingleOffer'
 
-function RoomOffers() {
+function RoomOffers({offers}) {
   return (
     <div>
-        {offersData.data.propertyOffers.units.map((offer,index)=>{
+        {offers.data.propertyOffers.units.map((offer,index)=>{
             return(
                 <SingleOffer offerData = {offer} key={index}/>
             )

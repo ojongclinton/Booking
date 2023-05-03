@@ -146,7 +146,7 @@ const [dataObj,setDataObgj] = useState(initial)
           </div>
           <div style={{margin:"10px 0px"}}>
             <Link to="./offers" state={dataObj}>
-              <Button to='#0e1317' textFrom='white' text='Check availability' />
+              <Button to='#0e1317' textFrom='white' text='Get Offers' />
             </Link>
 
           </div>
