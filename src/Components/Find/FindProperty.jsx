@@ -244,11 +244,11 @@ const fetchData =async ()=>{
   console.log("Lol")
   const options = {
     method: 'GET',
-   // url: 'https://hotels4.p.rapidapi.com/locations/v3/search',
+   url: 'https://hotels4.p.rapidapi.com/locations/v3/search',
     params: {q: searchTerm},
     headers: {
-      // 'X-RapidAPI-Key': '7d266fe8e5mshaa6c100f384b6efp1fea46jsn72d95cb12846',
-      // 'X-RapidAPI-Host': 'hotels4.p.rapidapi.com'
+      'X-RapidAPI-Key': '7d266fe8e5mshaa6c100f384b6efp1fea46jsn72d95cb12846',
+      'X-RapidAPI-Host': 'hotels4.p.rapidapi.com'
     }
   };
 
@@ -258,7 +258,7 @@ const fetchData =async ()=>{
     setGid(response.data.sr[0].gaiaId)
   }
   catch(e){
-    console.log("An Exception occured")
+    console.log(e)
   }
 
 }

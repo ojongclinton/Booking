@@ -128,13 +128,13 @@ function LuxuryRooms() {
       let isUnfetched = true;
       {/***************************/}
       const options = {
-        // method: 'GET',
-        // url: 'https://hotels4.p.rapidapi.com/locations/v3/search',
-        // params: {q: currCountry},
-        // headers: {
-        //   'X-RapidAPI-Key': '7d266fe8e5mshaa6c100f384b6efp1fea46jsn72d95cb12846',
-        //   'X-RapidAPI-Host': 'hotels4.p.rapidapi.com'
-        // }
+        method: 'GET',
+        url: 'https://hotels4.p.rapidapi.com/locations/v3/search',
+        params: {q: currCountry},
+        headers: {
+          'X-RapidAPI-Key': '7d266fe8e5mshaa6c100f384b6efp1fea46jsn72d95cb12846',
+          'X-RapidAPI-Host': 'hotels4.p.rapidapi.com'
+        }
       };
 
       (async () => {
