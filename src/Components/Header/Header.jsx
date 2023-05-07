@@ -32,16 +32,14 @@ function Header() {
       </div>
       <div>
         <div className='links'>
-          <Sign text='Home'/>
-          <Sign text='Pages'/>
-          <Sign text='Room'/>
-          <Sign text='Blog'/>
-          <Sign text='Contact'/>
+          <Sign text='Home' link='/'/>
+          <Sign text='Around Me' link='/AroundMe'/>
+          <Sign text='Search' link='/Search'/>
+          <Sign text='ABOUT ME' link='/Contact'/>
         </div>
       </div>
       <div className='headerButtonContainer'>
-        {/* <button>BOOK NOW <AiOutlineArrowRight/></button> */}
-        <Button text='BOOK NOW'/>
+        <Button text='BOOK NOW' linksTo='/Search'/>
       </div>
     </div>
   )

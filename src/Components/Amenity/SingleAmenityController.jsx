@@ -106,7 +106,7 @@ if(isError){
   <div css={picHeader}>
     <div css={picContent}>
       <h1>{data.data.propertyInfo.summary.name}</h1>
-      <Rating readOnly value={data.data.propertyInfo.summary.overview.propertyRating.rating}/>
+      <Rating readOnly value={data.data.propertyInfo?.summary?.overview?.propertyRating?.rating}/>
     </div>
   </div>
   <div css={contentContainer}>

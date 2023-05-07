@@ -13,17 +13,17 @@ const amenities = [
     {
         name:"Room Cleaning",
         icon:<GiMagicBroom size={35} color='#b89146'/>,
-        description:"Proin massa augue, lacinia at blandit ac, fringilla scelerisque tortor"
+        description:"All hotels listed on our platform are committed to providing guests with a clean and healthy environment."
     },
     {
         name:"Room Wifi",
         icon:<MdWifiPassword size={35} color='#b89146'/>,
-        description:"Proin massa augue, lacinia at blandit ac, fringilla scelerisque tortor"
+        description:"Staying connected is important, Get deals with hotels that offer free and high speed internet connection"
     },
     {
         name:"Pickup & Drop",
         icon:<TbMapSearch size={35} color='#b89146'/>,
-        description:"Proin massa augue, lacinia at blandit ac, fringilla scelerisque tortor"
+        description:"We've partnered with top hotels that provide convenient pickup and drop-off services for their guests."
     }
 ]
 

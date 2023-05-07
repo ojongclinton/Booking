@@ -9,6 +9,8 @@ import MediaQueryContextProvider from './Hooks/MediaQueryContextProvider';
 import { store } from './store/store';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -17,7 +19,9 @@ root.render(
       <Provider store={store}>
           <MediaQueryContextProvider>
               <LocationContextProvider>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <App/>
+              </LocalizationProvider>
               </LocationContextProvider>
           </MediaQueryContextProvider>
       </Provider>

@@ -239,7 +239,15 @@ div.sticky-side-bar-selection select
     border-radius: 5px;
     color: black;
 }
-
+.mui-form-control{
+    padding: 0px;
+    width: 100%;
+    margin-bottom: 19px !important;
+    background-color: #ffffff;
+}
+body{
+    overflow-x: hidden;
+}
 /*------------------------------------------
   Responsive Grid Media Queries - 1280, 1024, 768, 480
    1280-1024   - desktop (default grid)
@@ -404,9 +412,9 @@ div.sticky-side-bar-selection select
     div.image-footer-single-grid{
         padding: 25px;
     }
-    div.image-footer-single-grid-button{
+    /* div.image-footer-single-grid-button{
         
-    }
+    } */
     div.image-text-container{
         font-size: 30px;    
     }

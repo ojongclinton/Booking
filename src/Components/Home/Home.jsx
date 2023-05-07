@@ -95,7 +95,7 @@ function Home() {
                   <p className='white'>Room</p>
                 </div>
                 <div className='bottom-icon'>
-                  <Select size='small' fullWidth value={rooms} onChange={handleRoom}  variant="standard"  style={{color:'#b89146',fontWeight:700,fontSize:'14px'}}>
+                  <Select disableUnderline size='small' fullWidth value={rooms} onChange={handleRoom}  variant="standard"  style={{color:'#b89146',fontWeight:700,fontSize:'14px'}}>
                     <MenuItem value={1}>1 Room</MenuItem>
                     <MenuItem value={2}>2 Rooms</MenuItem>
                     <MenuItem value={3}>3 Rooms</MenuItem>

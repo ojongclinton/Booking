@@ -32,10 +32,9 @@ function MobileHeader({scroll}) {
                     </div>
                     <div>
                     <Sign text='Home'/>
-                    <Sign text='Pages'/>
-                    <Sign text='Room'/>
-                    <Sign text='Blog'/>
-                    <Sign text='Contact'/>
+                    <Sign text='Around me' link='/AroundMe'/>
+                    <Sign text='Search' link='/Search'/>
+                    <Sign text='ABOUT ME' link='/Contact'/>
                     </div>
                 </div>
         </Drawer>

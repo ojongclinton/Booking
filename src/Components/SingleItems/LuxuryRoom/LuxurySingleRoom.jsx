@@ -87,20 +87,15 @@ function LuxurySingleRoom({room}) {
             background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(14, 19, 23, 0)), to(#0E1317));
     }
     `
-
-const formStyles = css`
-
-`
-
   return (
     <div css={parentDiv} onMouseEnter={()=>setMouseIn(true)} onMouseLeave={()=>setMouseIn(false)}>
 
                 <Collapse in={mouseIn} collapsedSize={70} orientation="vertical" timeout={500} css={contentContainer}>
                             <div css={priceDiv}>{/*  Price section */}
-                                <p> {room.price.options[0].formattedDisplayPrice} <span> / {room.price.priceMessages[0].value}</span></p> 
+                                <p> {room.price?.options[0]?.formattedDisplayPrice || "$$"} <span> / {room.price.priceMessages[0].value}</span></p> 
                             </div>
                             <div css={nameDiv}>{/*  Name section */}
-                                <h3>Small Suite</h3>
+                                <h3>{room.name}</h3>
                             </div>
                                 <a href={`/Amenity/property/${room.id}`}>
                                     <div css={bookingDiv} className='showMe'>{/*  Booking Now section */}

@@ -8,6 +8,8 @@ import Amenity from "./Components/Amenity/Amenity";
 import React,{useEffect,useState} from "react";
 import LoadingScreen from "./Components/SingleItems/Loading/LoadingScreen";
 import AroundMe from "./Components/AroundMe/AroundMe";
+import FindProperty from "./Components/Find/FindProperty";
+import AboutMe from "./Components/AboutMe/AboutMe";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,6 +29,8 @@ function App() {
     <Route path="/" element={<Home/>}/>
     <Route path="/Amenity/*" element={<Amenity/>}/>
     <Route path="/AroundMe" element={<AroundMe/>}/>
+    <Route path="/Search" element={<FindProperty/>}/>
+    <Route path="/Contact" element={<AboutMe/>}/>
     <Route path="/text" element={<Test/>}/>
   </Routes>
 <Footer/>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi';
 
-function Button({text='submit',from='#b89146',to='white', textTo='white', textFrom='black', big=false,small=false ,width='auto',border=false,showBg=true}) {
+function Button({text='submit',from='#b89146',to='white', textTo='white', textFrom='black', big=false,small=false ,width='auto',border=false,showBg=true ,linksTo="/"}) {
 const [hover,setHover] = React.useState(false);
 
 
@@ -25,7 +25,7 @@ const [hover,setHover] = React.useState(false);
     }
   return (
     <div style={{...btnStyleDiv}} onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)}>
-        <a style={{...inner}} className={big?"bigButton":""}>{text} <HiOutlineArrowNarrowRight style={{position:'relative',top:'2px',left:'5px'}}/></a>
+        <a href={linksTo} style={{...inner}} className={big?"bigButton":""}>{text} <HiOutlineArrowNarrowRight style={{position:'relative',top:'2px',left:'5px'}}/></a>
     </div>
   )
 }
